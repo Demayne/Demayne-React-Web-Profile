@@ -99,7 +99,7 @@ const About = () => {
   return (
     <div className="pt-20 sm:pt-24 min-h-screen bg-gray-900 overflow-x-hidden" ref={ref}>
       <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={containerVariants}
@@ -123,21 +123,21 @@ const About = () => {
         </motion.div>
 
         {/* Personal Info */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16 max-w-2xl mx-auto px-4" variants={itemVariants}>
-          <div className="bg-gray-800 p-6 rounded-xl flex items-start gap-4 shadow-lg shadow-indigo-900/20 border border-gray-700 hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16 max-w-4xl mx-auto px-4" variants={itemVariants}>
+          <div className="bg-gray-800 p-6 rounded-xl flex items-start gap-4 shadow-lg shadow-indigo-900/20 border border-gray-700 hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 min-w-0">
             <FiMail className="text-3xl text-indigo-400 flex-shrink-0 mt-1" />
-            <div>
+            <div className="min-w-0 flex-1">
               <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Email</h3>
-              <a href="mailto:govender.demayne@gmail.com" className="text-base text-gray-100 font-medium hover:text-indigo-400 transition-colors">
+              <a href="mailto:govender.demayne@gmail.com" className="text-base text-gray-100 font-medium hover:text-indigo-400 transition-colors break-words break-all">
                 govender.demayne@gmail.com
               </a>
             </div>
           </div>
-          <div className="bg-gray-800 p-6 rounded-xl flex items-start gap-4 shadow-lg shadow-indigo-900/20 border border-gray-700 hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1">
+          <div className="bg-gray-800 p-6 rounded-xl flex items-start gap-4 shadow-lg shadow-indigo-900/20 border border-gray-700 hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 min-w-0">
             <FiMapPin className="text-3xl text-indigo-400 flex-shrink-0 mt-1" />
-            <div>
+            <div className="min-w-0 flex-1">
               <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Location</h3>
-              <p className="text-base text-gray-100 font-medium">Pretoria, Gauteng, ZA</p>
+              <p className="text-base text-gray-100 font-medium break-words">Pretoria, Gauteng, ZA</p>
             </div>
           </div>
         </motion.div>

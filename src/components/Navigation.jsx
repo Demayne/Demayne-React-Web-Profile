@@ -80,10 +80,10 @@ const Navigation = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center relative z-50">
-          <Link to="/" className="flex items-center gap-3 text-gray-100 font-bold text-xl hover:scale-105 transition-transform z-50 relative" onClick={() => setIsMobileMenuOpen(false)}>
-            <img src="/Demayne Govender Logo.png" alt="Demayne Govender Logo" className="h-10 w-auto object-contain brightness-110" />
-            <span className="font-display">Demayne Govender</span>
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 py-3 sm:py-4 flex justify-between items-center relative z-50">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 text-gray-100 font-bold text-base sm:text-lg lg:text-xl hover:scale-105 transition-transform z-50 relative min-w-0" onClick={() => setIsMobileMenuOpen(false)}>
+            <img src="/Demayne Govender Logo.png" alt="Demayne Govender Logo" className="h-8 sm:h-9 lg:h-10 w-auto object-contain brightness-110 flex-shrink-0" />
+            <span className="font-display truncate">Demayne Govender</span>
           </Link>
 
           <ul className={`${
