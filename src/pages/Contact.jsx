@@ -14,7 +14,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState(null)
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true })
 
   const handleChange = (e) => {
     setFormData({

@@ -42,12 +42,12 @@ const Navigation = () => {
 
         <ul className={`${
           isMobileMenuOpen ? 'flex' : 'hidden'
-        } md:flex items-center gap-8 list-none md:static fixed left-0 top-[70px] flex-col md:flex-row w-full md:w-auto bg-gray-900 md:bg-transparent shadow-lg md:shadow-none py-8 md:py-0 transition-all duration-300 z-40`}>
+        } md:flex items-center gap-6 md:gap-8 list-none md:static fixed left-0 top-[70px] flex-col md:flex-row w-full md:w-auto bg-gray-900/98 backdrop-blur-lg md:bg-transparent shadow-lg md:shadow-none py-8 md:py-0 transition-all duration-300 z-40 border-b border-gray-800 md:border-0`}>
           {navLinks.map((link) => (
             <li key={link.path} className="relative">
               <Link
                 to={link.path}
-                className={`relative text-gray-300 font-medium text-sm md:text-base transition-colors duration-300 py-2 block ${
+                className={`relative text-gray-300 font-medium text-base md:text-base transition-colors duration-300 py-3 md:py-2 block w-full md:w-auto text-center md:text-left touch-manipulation ${
                   isActive(link.path) ? 'text-indigo-400' : 'hover:text-indigo-400'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}

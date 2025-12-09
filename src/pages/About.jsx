@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import { FiBriefcase, FiAward, FiCode, FiMail, FiMapPin, FiDownload, FiEye, FiLayers, FiDatabase, FiShield, FiCloud, FiTool, FiTrendingUp, FiCpu } from 'react-icons/fi'
 
 const About = () => {
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true })
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -97,23 +97,23 @@ const About = () => {
   ]
 
   return (
-    <div className="pt-24 min-h-screen bg-gray-900" ref={ref}>
+    <div className="pt-20 sm:pt-24 min-h-screen bg-gray-900 overflow-x-hidden" ref={ref}>
       <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={containerVariants}
       >
         {/* Header */}
-        <motion.div className="text-center mb-16" variants={itemVariants}>
-          <h1 className="text-5xl font-bold mb-4 text-gray-100 font-display">About Me</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6">
+        <motion.div className="text-center mb-12 sm:mb-16" variants={itemVariants}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-100 font-display px-2">About Me</h1>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6 px-4">
             Results-driven Full-Stack Engineer with proven expertise in building scalable web applications and automating complex business processes. Top-of-class graduate (99% average) with hands-on experience developing 15+ production-ready applications using modern tech stacks (MERN, Python, React, Node.js).
           </p>
           <motion.a
             href="/Demayne_Govender_Resume.pdf"
             download="Demayne_Govender_Resume.pdf"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm sm:text-base touch-manipulation"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -123,7 +123,7 @@ const About = () => {
         </motion.div>
 
         {/* Personal Info */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-2xl mx-auto" variants={itemVariants}>
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16 max-w-2xl mx-auto px-4" variants={itemVariants}>
           <div className="bg-gray-800 p-6 rounded-xl flex items-start gap-4 shadow-lg shadow-indigo-900/20 border border-gray-700 hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1">
             <FiMail className="text-3xl text-indigo-400 flex-shrink-0 mt-1" />
             <div>
@@ -143,34 +143,34 @@ const About = () => {
         </motion.div>
 
         {/* Work Experience */}
-        <motion.section className="mb-16 bg-gray-800 p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
-            <FiBriefcase className="text-indigo-400 text-3xl" />
+        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
+            <FiBriefcase className="text-indigo-400 text-2xl sm:text-3xl" />
             Work Experience
           </h2>
-          <div className="relative pl-8">
+          <div className="relative pl-4 sm:pl-8">
             <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-indigo-600 to-purple-600"></div>
             {workExperience.map((exp, index) => (
               <motion.div
                 key={index}
-                className="relative mb-12 pl-8"
+                className="relative mb-8 sm:mb-12 pl-6 sm:pl-8"
                 variants={itemVariants}
                 whileHover={{ x: 10 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="absolute -left-[1.625rem] top-2 w-3 h-3 rounded-full bg-indigo-600 border-4 border-white shadow-[0_0_0_3px_rgb(99,102,241)]"></div>
-                <div className="bg-gray-800 p-6 rounded-xl border-l-4 border-indigo-500">
-                  <div className="flex justify-between items-start mb-2 flex-wrap gap-4">
-                    <h3 className="text-2xl font-semibold text-gray-100">{exp.title}</h3>
+                <div className="absolute -left-[0.875rem] sm:-left-[1.625rem] top-2 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-indigo-600 border-2 sm:border-4 border-white shadow-[0_0_0_2px_rgb(99,102,241)] sm:shadow-[0_0_0_3px_rgb(99,102,241)]"></div>
+                <div className="bg-gray-800 p-4 sm:p-6 rounded-xl border-l-2 sm:border-l-4 border-indigo-500">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-2 sm:gap-4">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-100">{exp.title}</h3>
                     <span className="text-sm text-gray-300 font-medium bg-indigo-500/20 px-3 py-1 rounded-full border border-indigo-500/30">
                       {exp.period}
                     </span>
                   </div>
-                  <p className="text-lg text-indigo-400 font-semibold mb-1">{exp.company}</p>
-                  {exp.location && <p className="text-sm text-gray-400 mb-4">{exp.location}</p>}
+                  <p className="text-base sm:text-lg text-indigo-400 font-semibold mb-1">{exp.company}</p>
+                  {exp.location && <p className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">{exp.location}</p>}
                   <ul className="list-none space-y-2">
                     {exp.description.map((item, i) => (
-                      <li key={i} className="pl-6 relative text-gray-300 leading-relaxed">
+                      <li key={i} className="pl-5 sm:pl-6 relative text-sm sm:text-base text-gray-300 leading-relaxed">
                         <span className="absolute left-0 text-indigo-400 font-bold">▸</span>
                         {item}
                       </li>
@@ -183,8 +183,8 @@ const About = () => {
         </motion.section>
 
         {/* Key Achievements */}
-        <motion.section className="mb-16 bg-gray-800 p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
+        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
             <FiAward className="text-indigo-400 text-3xl" />
             Key Achievements
           </h2>
@@ -217,13 +217,13 @@ const About = () => {
         </motion.section>
 
         {/* Skills */}
-        <motion.section className="mb-16 bg-gray-800 p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
-            <FiCode className="text-indigo-400 text-3xl" />
+        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
+            <FiCode className="text-indigo-400 text-2xl sm:text-3xl" />
             Technical Skills
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {Object.entries(skills).map(([category, skillList], categoryIndex) => {
               // Icon mapping for each category
               const categoryIcons = {
@@ -261,21 +261,21 @@ const About = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 via-purple-500/0 to-indigo-500/0 group-hover:from-indigo-500/10 group-hover:via-purple-500/10 group-hover:to-indigo-500/10 transition-all duration-500"></div>
                   
                   {/* Category Header */}
-                  <div className="flex items-center gap-3 mb-4 relative z-10">
-                    <div className="p-2 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg border border-indigo-500/30 text-indigo-400 group-hover:scale-110 transition-transform duration-300">
-                      {categoryIcons[category] || <FiCode className="text-2xl" />}
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 relative z-10">
+                    <div className="p-1.5 sm:p-2 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg border border-indigo-500/30 text-indigo-400 group-hover:scale-110 transition-transform duration-300">
+                      {categoryIcons[category] || <FiCode className="text-xl sm:text-2xl" />}
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-100 group-hover:text-indigo-400 transition-colors duration-300">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-100 group-hover:text-indigo-400 transition-colors duration-300">
                       {category}
                     </h3>
                   </div>
 
                   {/* Skills Grid */}
-                  <div className="flex flex-wrap gap-2 relative z-10">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 relative z-10">
                     {skillList.map((skill, skillIndex) => (
                       <motion.div
                         key={skillIndex}
-                        className="px-3 py-1.5 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:border-indigo-500 hover:bg-indigo-500/20 transition-all duration-300 cursor-default group/skill"
+                        className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-800/80 backdrop-blur-sm border border-gray-700 rounded-lg text-xs font-medium text-gray-300 hover:text-white hover:border-indigo-500 hover:bg-indigo-500/20 transition-all duration-300 cursor-default group/skill touch-manipulation"
                         initial="hidden"
                         animate={inView ? 'visible' : 'hidden'}
                         variants={{
@@ -312,32 +312,32 @@ const About = () => {
         </motion.section>
 
         {/* Certificates */}
-        <motion.section className="mb-16 bg-gray-800 p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
-            <FiAward className="text-indigo-400 text-3xl" />
+        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
+            <FiAward className="text-indigo-400 text-2xl sm:text-3xl" />
             Certificates
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {certificates.map((cert, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-800 p-8 rounded-xl border-2 border-gray-700 hover:border-indigo-500 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 flex flex-col"
+                className="bg-gray-800 p-4 sm:p-6 lg:p-8 rounded-xl border-2 border-gray-700 hover:border-indigo-500 transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/20 flex flex-col"
                 whileHover={{ y: -5 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <h3 className="text-xl font-semibold mb-2 text-gray-100">{cert.title}</h3>
-                <p className="text-base text-indigo-400 font-medium mb-2">{cert.issuer}</p>
-                <p className="text-sm text-gray-400 mb-4">{cert.date}</p>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-gray-100">{cert.title}</h3>
+                <p className="text-sm sm:text-base text-indigo-400 font-medium mb-2">{cert.issuer}</p>
+                <p className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">{cert.date}</p>
                 {cert.description && (
-                  <p className="text-sm text-gray-300 leading-relaxed mb-6 flex-grow">{cert.description}</p>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 sm:mb-6 flex-grow">{cert.description}</p>
                 )}
                 {cert.pdf && (
-                  <div className="flex gap-3 mt-auto">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-auto pt-4">
                     <motion.a
                       href={cert.pdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium"
+                      className="flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium touch-manipulation"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -347,7 +347,7 @@ const About = () => {
                     <motion.a
                       href={cert.pdf}
                       download
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-700 text-gray-100 rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium border border-gray-600"
+                      className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-700 text-gray-100 rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium border border-gray-600 touch-manipulation"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >

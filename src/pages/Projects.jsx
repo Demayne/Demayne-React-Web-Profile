@@ -5,7 +5,7 @@ import { FiGithub, FiCode, FiDatabase, FiLayers } from 'react-icons/fi'
 
 const Projects = () => {
   const [filter, setFilter] = useState('all')
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true })
+  const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true })
 
   const projects = [
     {

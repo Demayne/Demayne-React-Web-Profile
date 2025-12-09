@@ -5,8 +5,8 @@ import { FiGithub, FiLinkedin, FiMail, FiArrowRight, FiCode, FiDatabase, FiCpu }
 import { useInView } from 'react-intersection-observer'
 
 const Home = () => {
-  const [heroRef, heroInView] = useInView({ threshold: 0.1, triggerOnce: true })
-  const [skillsRef, skillsInView] = useInView({ threshold: 0.2, triggerOnce: true })
+  const [heroRef, heroInView] = useInView({ threshold: 0.05, triggerOnce: true })
+  const [skillsRef, skillsInView] = useInView({ threshold: 0.1, triggerOnce: true })
 
   const containerVariants = {
     hidden: { opacity: 0 },
