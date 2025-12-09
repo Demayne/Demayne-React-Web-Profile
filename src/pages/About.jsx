@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FiBriefcase, FiAward, FiCode, FiMail, FiMapPin, FiDownload, FiEye, FiLayers, FiDatabase, FiShield, FiCloud, FiTool, FiTrendingUp, FiCpu } from 'react-icons/fi'
+import { FiBriefcase, FiAward, FiCode, FiMail, FiMapPin, FiDownload, FiEye, FiLayers, FiDatabase, FiShield, FiCloud, FiTool, FiTrendingUp, FiCpu, FiExternalLink } from 'react-icons/fi'
 
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true })
@@ -86,6 +86,7 @@ const About = () => {
       date: 'Nov 2025',
       description: 'Achieved top ranking with 99% average across comprehensive curriculum covering software engineering fundamentals, full-stack development, algorithms, data structures, and modern web technologies. Completed advanced projects demonstrating expertise in React, Node.js, Python, Java, SQL, and cloud technologies.',
       pdf: '/Full_Stack_Certificate.pdf',
+      portfolio: 'https://www.hyperiondev.com/portfolio/DG23030008394/',
     },
     {
       title: 'Certified Advanced RPA Professional',
@@ -331,29 +332,46 @@ const About = () => {
                 {cert.description && (
                   <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mb-4 sm:mb-6 flex-grow">{cert.description}</p>
                 )}
-                {cert.pdf && (
+                {(cert.pdf || cert.portfolio) && (
                   <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-auto pt-4">
-                    <motion.a
-                      href={cert.pdf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium touch-manipulation"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FiEye />
-                      View Certificate
-                    </motion.a>
-                    <motion.a
-                      href={cert.pdf}
-                      download
-                      className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-700 text-gray-100 rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium border border-gray-600 touch-manipulation"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FiDownload />
-                      Download
-                    </motion.a>
+                    {cert.pdf && (
+                      <motion.a
+                        href={cert.pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium touch-manipulation flex-1"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FiEye />
+                        View Certificate
+                      </motion.a>
+                    )}
+                    {cert.portfolio && (
+                      <motion.a
+                        href={cert.portfolio}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium touch-manipulation flex-1"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FiExternalLink />
+                        View Portfolio
+                      </motion.a>
+                    )}
+                    {cert.pdf && (
+                      <motion.a
+                        href={cert.pdf}
+                        download
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-gray-700 text-gray-100 rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium border border-gray-600 touch-manipulation flex-1"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FiDownload />
+                        Download
+                      </motion.a>
+                    )}
                   </div>
                 )}
               </motion.div>
