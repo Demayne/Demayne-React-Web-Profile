@@ -9,6 +9,16 @@
 
   body {
     @apply font-sans antialiased text-gray-100 bg-gray-900 overflow-x-hidden;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  a, button {
+    touch-action: manipulation;
   }
 
   code {
