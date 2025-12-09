@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import CursorTrail from './components/CursorTrail'
@@ -29,19 +29,17 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="App">
-        <CursorTrail />
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <BackToTop />
-      </div>
-    </Router>
+    <div className="App">
+      <CursorTrail />
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      <BackToTop />
+    </div>
   )
 }
 

@@ -155,35 +155,35 @@ const Contact = () => {
         variants={containerVariants}
       >
         {/* Header */}
-        <motion.div className="text-center mb-16" variants={itemVariants}>
-          <h1 className="text-5xl font-bold mb-4 text-gray-100 font-display">Get In Touch</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <motion.div className="text-center mb-12 sm:mb-16 px-4" variants={itemVariants}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 text-gray-100 font-display">Get In Touch</h1>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             I'm always open to discussing new projects, creative ideas, or opportunities
             to be part of your vision. Let's connect!
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start px-4">
           {/* Contact Info */}
-          <motion.div className="bg-gray-800 p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-            <h2 className="text-2xl font-bold mb-8 text-gray-100 font-display">Contact Information</h2>
-            <div className="space-y-6 mb-10">
+          <motion.div className="bg-gray-800 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
+            <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-gray-100 font-display">Contact Information</h2>
+            <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-10">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start gap-4 p-6 bg-gray-800 rounded-xl border-l-4 border-indigo-500 transition-all duration-300"
+                  className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-gray-800 rounded-xl border-l-4 border-indigo-500 transition-all duration-300"
                   whileHover={{ x: 10 }}
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <div className="text-2xl text-indigo-400 flex-shrink-0 mt-1">{info.icon}</div>
-                  <div className="flex flex-col gap-1">
+                  <div className="text-xl sm:text-2xl text-indigo-400 flex-shrink-0 mt-1">{info.icon}</div>
+                  <div className="flex flex-col gap-1 min-w-0 flex-1">
                     <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">{info.label}</span>
                     {info.link ? (
-                      <a href={info.link} className="text-base text-gray-100 font-medium hover:text-indigo-400 transition-colors">
+                      <a href={info.link} className="text-sm sm:text-base text-gray-100 font-medium hover:text-indigo-400 transition-colors break-words">
                         {info.value}
                       </a>
                     ) : (
-                      <span className="text-base text-gray-100 font-medium">{info.value}</span>
+                      <span className="text-sm sm:text-base text-gray-100 font-medium break-words">{info.value}</span>
                     )}
                   </div>
                 </motion.div>
@@ -191,15 +191,15 @@ const Contact = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-100">Connect With Me</h3>
-              <div className="flex gap-4">
+              <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-gray-100">Connect With Me</h3>
+              <div className="flex gap-3 sm:gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center w-12 h-12 bg-gray-800 border-2 border-gray-700 rounded-xl text-gray-100 text-2xl transition-all duration-300 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white hover:shadow-lg hover:shadow-indigo-500/50"
+                    className="flex items-center justify-center w-12 h-12 bg-gray-800 border-2 border-gray-700 rounded-xl text-gray-100 text-xl sm:text-2xl transition-all duration-300 hover:bg-indigo-500 hover:border-indigo-500 hover:text-white hover:shadow-lg hover:shadow-indigo-500/50 touch-manipulation"
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                     aria-label={social.label}
@@ -212,8 +212,8 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div className="lg:col-span-2 bg-gray-800 p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-            <h2 className="text-2xl font-bold mb-8 text-gray-100 font-display">Send a Message</h2>
+          <motion.div className="lg:col-span-2 bg-gray-800 p-5 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
+            <h2 className="text-xl sm:text-2xl font-bold mb-6 sm:mb-8 text-gray-100 font-display">Send a Message</h2>
             {isSubmitted && (
               <motion.div
                 className="flex items-center gap-3 p-4 bg-green-500/20 border-2 border-green-500/50 rounded-lg text-green-400 font-medium mb-6"
@@ -319,7 +319,7 @@ const Contact = () => {
               </div>
               <motion.button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-base mt-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 text-sm sm:text-base mt-2 disabled:opacity-70 disabled:cursor-not-allowed touch-manipulation min-h-[44px]"
                 disabled={isSubmitting}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

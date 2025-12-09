@@ -30,7 +30,7 @@ const BackToTop = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-full shadow-lg shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/70 transition-all duration-300 touch-manipulation"
+          className="fixed bottom-6 right-4 sm:bottom-8 sm:right-8 z-50 bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-3 sm:p-4 rounded-full shadow-lg shadow-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/70 transition-all duration-300 touch-manipulation min-w-[48px] min-h-[48px] flex items-center justify-center"
           onClick={scrollToTop}
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -39,7 +39,7 @@ const BackToTop = () => {
           whileTap={{ scale: 0.95 }}
           aria-label="Back to top"
         >
-          <FiArrowUp className="text-2xl" />
+          <FiArrowUp className="text-xl sm:text-2xl" />
         </motion.button>
       )}
     </AnimatePresence>

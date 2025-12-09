@@ -62,24 +62,24 @@ const Home = () => {
             <motion.h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-gray-100" variants={itemVariants}>
               Hi, I'm <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-display">Demayne Govender</span>
             </motion.h1>
-            <motion.p className="text-xl text-gray-300 leading-relaxed max-w-2xl" variants={itemVariants}>
+            <motion.p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl px-2" variants={itemVariants}>
               Results-driven Full-Stack Engineer with proven expertise in building scalable web applications and automating complex business processes. Top-of-class graduate (99% average) with 15+ production-ready applications.
             </motion.p>
-            <motion.div className="flex gap-4 flex-wrap" variants={itemVariants}>
-              <Link to="/projects" className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+            <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap px-2" variants={itemVariants}>
+              <Link to="/projects" className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 text-sm sm:text-base touch-manipulation">
                 View My Work
                 <FiArrowRight />
               </Link>
-              <Link to="/contact" className="inline-flex items-center gap-2 px-7 py-3.5 bg-gray-800 text-indigo-400 font-semibold rounded-lg border-2 border-indigo-500 hover:bg-indigo-500 hover:text-white transition-all duration-300">
+              <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gray-800 text-indigo-400 font-semibold rounded-lg border-2 border-indigo-500 hover:bg-indigo-500 hover:text-white transition-all duration-300 text-sm sm:text-base touch-manipulation">
                 Get In Touch
               </Link>
             </motion.div>
-            <motion.div className="flex gap-4 mt-4" variants={itemVariants}>
+            <motion.div className="flex gap-3 sm:gap-4 mt-4 px-2" variants={itemVariants}>
               <a
                 href="https://github.com/Demayne"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-11 h-11 rounded-full bg-gray-800 text-gray-100 text-xl transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/50"
+                className="flex items-center justify-center w-12 h-12 sm:w-11 sm:h-11 rounded-full bg-gray-800 text-gray-100 text-xl transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/50 touch-manipulation"
                 aria-label="GitHub"
               >
                 <FiGithub />
@@ -88,14 +88,14 @@ const Home = () => {
                 href="https://www.linkedin.com/in/demayne-govender-452890316"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-11 h-11 rounded-full bg-gray-800 text-gray-100 text-xl transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/50"
+                className="flex items-center justify-center w-12 h-12 sm:w-11 sm:h-11 rounded-full bg-gray-800 text-gray-100 text-xl transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/50 touch-manipulation"
                 aria-label="LinkedIn"
               >
                 <FiLinkedin />
               </a>
               <a
                 href="mailto:govender.demayne@gmail.com"
-                className="flex items-center justify-center w-11 h-11 rounded-full bg-gray-800 text-gray-100 text-xl transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/50"
+                className="flex items-center justify-center w-12 h-12 sm:w-11 sm:h-11 rounded-full bg-gray-800 text-gray-100 text-xl transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:-translate-y-1 shadow-lg hover:shadow-indigo-500/50 touch-manipulation"
                 aria-label="Email"
               >
                 <FiMail />
@@ -109,7 +109,7 @@ const Home = () => {
             animate={heroInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <div className="w-full max-w-md h-96 flex items-center justify-center bg-gray-800 rounded-2xl shadow-2xl shadow-indigo-500/20 p-8 relative overflow-hidden border border-gray-700">
+            <div className="w-full max-w-md h-64 sm:h-80 lg:h-96 flex items-center justify-center bg-gray-800 rounded-2xl shadow-2xl shadow-indigo-500/20 p-4 sm:p-6 lg:p-8 relative overflow-hidden border border-gray-700 mx-auto">
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-transparent to-transparent animate-shine"></div>
               <img src="/Demayne Govender Logo.png" alt="Demayne Govender Logo" className="w-full h-full object-contain relative z-10 brightness-110" />
             </div>
@@ -132,21 +132,21 @@ const Home = () => {
           animate={skillsInView ? 'visible' : 'hidden'}
           variants={containerVariants}
         >
-          <motion.h2 className="text-4xl font-bold text-center mb-12 text-gray-100 font-display" variants={itemVariants}>
+          <motion.h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 text-gray-100 font-display px-4" variants={itemVariants}>
             What I Do
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-4">
             {skills.map((skill, index) => (
               <motion.div
                 key={skill.name}
-                className="bg-gray-800 p-10 rounded-2xl shadow-lg shadow-indigo-900/20 text-center border border-gray-700 hover:shadow-xl hover:shadow-indigo-500/20 hover:border-indigo-500/50 transition-all duration-300"
+                className="bg-gray-800 p-6 sm:p-8 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 text-center border border-gray-700 hover:shadow-xl hover:shadow-indigo-500/20 hover:border-indigo-500/50 transition-all duration-300"
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.05 }}
                 transition={{ type: 'spring', stiffness: 300 }}
               >
-                <div className="text-5xl text-indigo-400 mb-4 flex justify-center">{skill.icon}</div>
-                <h3 className="text-2xl font-semibold mb-2 text-gray-100">{skill.name}</h3>
-                <p className="text-gray-300 text-sm">{skill.tech}</p>
+                <div className="text-4xl sm:text-5xl text-indigo-400 mb-3 sm:mb-4 flex justify-center">{skill.icon}</div>
+                <h3 className="text-xl sm:text-2xl font-semibold mb-2 text-gray-100">{skill.name}</h3>
+                <p className="text-gray-300 text-xs sm:text-sm">{skill.tech}</p>
               </motion.div>
             ))}
           </div>
@@ -162,9 +162,9 @@ const Home = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold mb-4 font-display">Let's Build Something Amazing Together</h2>
-          <p className="text-xl mb-8 opacity-90">I'm always open to discussing new projects and opportunities.</p>
-          <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 text-lg">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 font-display px-4">Let's Build Something Amazing Together</h2>
+          <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 opacity-90 px-4">I'm always open to discussing new projects and opportunities.</p>
+          <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 text-base sm:text-lg touch-manipulation">
             Start a Conversation
             <FiArrowRight />
           </Link>
