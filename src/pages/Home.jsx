@@ -63,7 +63,7 @@ const Home = () => {
               Hi, I'm <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-display">Demayne Govender</span>
             </motion.h1>
             <motion.p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl px-2" variants={itemVariants}>
-              Results-driven Full-Stack Engineer with proven expertise in building scalable web applications and automating complex business processes. Top-of-class graduate (99% average) with 15+ production-ready applications.
+              Full-Stack Engineer delivering scalable web solutions and enterprise automation systems. Top-ranked graduate with a proven track record of architecting and deploying 15+ production applications across modern technology stacks.
             </motion.p>
             <motion.div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap px-2" variants={itemVariants}>
               <Link to="/projects" className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 text-sm sm:text-base touch-manipulation">
