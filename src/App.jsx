@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Navigation from './components/Navigation'
 import CursorTrail from './components/CursorTrail'
+import BackToTop from './components/BackToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
@@ -38,6 +39,7 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
+        <BackToTop />
       </div>
     </Router>
   )

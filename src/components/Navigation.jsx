@@ -16,25 +16,36 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu when clicking outside
+  // Close mobile menu when clicking outside or on route change
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (isMobileMenuOpen && !event.target.closest('nav')) {
+      const nav = event.target.closest('nav')
+      const button = event.target.closest('button[aria-label="Toggle menu"]')
+      if (isMobileMenuOpen && !nav && !button) {
         setIsMobileMenuOpen(false)
       }
     }
+    
     if (isMobileMenuOpen) {
-      document.addEventListener('click', handleClickOutside)
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('touchstart', handleClickOutside)
       // Prevent body scroll when menu is open
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'unset'
     }
+    
     return () => {
-      document.removeEventListener('click', handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
       document.body.style.overflow = 'unset'
     }
   }, [isMobileMenuOpen])
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [location.pathname])
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -101,11 +112,21 @@ const Navigation = () => {
         </ul>
 
           <button
-            className="md:hidden bg-transparent border-none text-gray-100 text-2xl cursor-pointer p-2 z-50 relative"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden bg-transparent border-none text-gray-100 text-2xl cursor-pointer p-2 z-50 relative touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+            onClick={(e) => {
+              e.stopPropagation()
+              setIsMobileMenuOpen(!isMobileMenuOpen)
+            }}
             aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}
+            type="button"
           >
-            {isMobileMenuOpen ? <FiX /> : <FiMenu />}
+            <motion.div
+              animate={{ rotate: isMobileMenuOpen ? 90 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isMobileMenuOpen ? <FiX /> : <FiMenu />}
+            </motion.div>
           </button>
         </div>
       </motion.nav>
