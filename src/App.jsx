@@ -1,47 +1,42 @@
-import { Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { Suspense, lazy } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import CursorTrail from './components/CursorTrail'
 import BackToTop from './components/BackToTop'
-import Home from './pages/Home'
-import About from './pages/About'
-import Projects from './pages/Projects'
-import Contact from './pages/Contact'
+import FloatingSocial from './components/FloatingSocial'
 import './App.css'
 
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Projects = lazy(() => import('./pages/Projects'))
+const Contact = lazy(() => import('./pages/Contact'))
+
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    // Simulate loading time for smooth initial animation
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 500)
-    return () => clearTimeout(timer)
-  }, [])
-
-  if (isLoading) {
-    return (
-      <div className="loading-screen">
-        <div className="loader"></div>
-      </div>
-    )
-  }
+  const location = useLocation()
+  const showFloatingSocial = location.pathname !== '/contact'
 
   return (
-    <div className="App">
+    <div className="App overflow-x-hidden" style={{ maxWidth: '100vw', overflowX: 'hidden' }}>
       <CursorTrail />
       <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      {showFloatingSocial && <FloatingSocial />}
+      <main id="main-content" role="main" className="overflow-x-hidden" style={{ maxWidth: '100vw' }}>
+        <Suspense fallback={
+          <div className="loading-screen" aria-label="Loading page">
+            <div className="loader" />
+          </div>
+        }>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Suspense>
+      </main>
       <BackToTop />
     </div>
   )
 }
 
 export default App
-
