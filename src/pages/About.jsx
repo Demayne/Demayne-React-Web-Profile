@@ -44,7 +44,7 @@ const About = () => {
       location: 'Remote',
       period: 'Jun 2023 - Nov 2025',
       description: [
-        'Achieved #1 ranking with 99% average across Software Engineering and Full-Stack Web Development bootcamps, demonstrating mastery of Python, Java, JavaScript, SQL, and modern web frameworks',
+        'Achieved #1 ranking across Software Engineering and Full-Stack Web Development bootcamps, demonstrating mastery of Python, Java, JavaScript, SQL, and modern web frameworks',
         'Architected and developed 15+ production-ready full-stack applications using React, Node.js, Express.js, MongoDB, and MySQL, implementing RESTful APIs, authentication systems, and responsive UI/UX designs',
         'Designed and implemented machine learning pipelines using Python (NumPy, pandas, scikit-learn), improving model accuracy by 20% and enabling data-driven decision making across multiple projects',
         'Built scalable microservices architecture handling concurrent user requests, implementing JWT authentication, role-based access control, and secure API endpoints',
@@ -84,7 +84,7 @@ const About = () => {
       title: 'Full Stack Web & Software Engineer Graduate - Ranked #1 in Class',
       issuer: 'HyperionDev',
       date: 'Nov 2025',
-      description: 'Achieved top ranking with 99% average across comprehensive curriculum covering software engineering fundamentals, full-stack development, algorithms, data structures, and modern web technologies. Completed advanced projects demonstrating expertise in React, Node.js, Python, Java, SQL, and cloud technologies.',
+      description: 'Achieved top ranking across comprehensive curriculum covering software engineering fundamentals, full-stack development, algorithms, data structures, and modern web technologies. Completed advanced projects demonstrating expertise in React, Node.js, Python, Java, SQL, and cloud technologies.',
       pdf: '/Full_Stack_Certificate.pdf',
       portfolio: 'https://www.hyperiondev.com/portfolio/DG23030008394/',
     },
@@ -98,55 +98,64 @@ const About = () => {
   ]
 
   return (
-    <div className="pt-20 sm:pt-24 min-h-screen bg-gray-900 overflow-x-hidden" ref={ref}>
+    <div className="pt-20 sm:pt-24 min-h-screen bg-gray-900 overflow-x-hidden px-2 sm:px-0" ref={ref}>
       <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 w-full"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full"
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
         variants={containerVariants}
       >
-        {/* Header */}
-        <motion.div className="text-center mb-12 sm:mb-16" variants={itemVariants}>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-100 font-display px-2">About Me</h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6 px-4">
-            Results-driven Full-Stack Engineer with proven expertise in building scalable web applications and automating complex business processes. Top-of-class graduate (99% average) with hands-on experience developing 15+ production-ready applications using modern tech stacks (MERN, Python, React, Node.js).
+        <motion.header className="text-center mb-12 sm:mb-16" variants={itemVariants}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-100 font-display">About Me</h1>
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6">
+            I'm a Full-Stack Engineer passionate about transforming ideas into scalable web solutions and enterprise automation systems. With hands-on experience architecting and deploying 15+ production-ready applications, I specialize in building robust systems using modern technology stacks including React, Node.js, Python, and cloud technologies. I thrive on solving complex challenges and collaborating with teams to deliver solutions that drive measurable business impact. Always eager to learn, grow, and contribute to innovative projects that make a difference.
           </p>
           <motion.a
             href="/Demayne_Govender_Resume.pdf"
             download="Demayne_Govender_Resume.pdf"
-            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm sm:text-base touch-manipulation"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            aria-label="Download resume PDF"
           >
-            <FiDownload />
+            <FiDownload aria-hidden="true" />
             Download Resume
           </motion.a>
-        </motion.div>
+        </motion.header>
 
-        {/* Personal Info */}
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12 sm:mb-16 max-w-4xl mx-auto px-4" variants={itemVariants}>
-          <div className="bg-gray-800 p-6 rounded-xl flex items-start gap-4 shadow-lg shadow-indigo-900/20 border border-gray-700 hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 min-w-0">
-            <FiMail className="text-3xl text-indigo-400 flex-shrink-0 mt-1" />
+        <motion.section 
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 sm:mb-16 max-w-4xl mx-auto" 
+          variants={itemVariants}
+          aria-label="Contact information"
+        >
+          <div className="bg-gray-800/50 p-6 rounded-xl flex items-start gap-4 border border-gray-700/50 hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 min-w-0">
+            <FiMail className="text-3xl text-indigo-400 flex-shrink-0 mt-1" aria-hidden="true" />
             <div className="min-w-0 flex-1">
               <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Email</h3>
-              <a href="mailto:govender.demayne@gmail.com" className="text-base text-gray-100 font-medium hover:text-indigo-400 transition-colors break-words break-all">
+              <a 
+                href="mailto:govender.demayne@gmail.com" 
+                className="text-base text-gray-100 font-medium hover:text-indigo-400 transition-colors break-words break-all focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded"
+              >
                 govender.demayne@gmail.com
               </a>
             </div>
           </div>
-          <div className="bg-gray-800 p-6 rounded-xl flex items-start gap-4 shadow-lg shadow-indigo-900/20 border border-gray-700 hover:shadow-xl hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 min-w-0">
-            <FiMapPin className="text-3xl text-indigo-400 flex-shrink-0 mt-1" />
+          <div className="bg-gray-800/50 p-6 rounded-xl flex items-start gap-4 border border-gray-700/50 hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 min-w-0">
+            <FiMapPin className="text-3xl text-indigo-400 flex-shrink-0 mt-1" aria-hidden="true" />
             <div className="min-w-0 flex-1">
               <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Location</h3>
               <p className="text-base text-gray-100 font-medium break-words">Pretoria, Gauteng, ZA</p>
             </div>
           </div>
-        </motion.div>
+        </motion.section>
 
-        {/* Work Experience */}
-        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
-            <FiBriefcase className="text-indigo-400 text-2xl sm:text-3xl" />
+        <motion.section 
+          className="mb-12 sm:mb-16 bg-gray-800/50 p-6 lg:p-10 rounded-2xl border border-gray-700/50" 
+          variants={itemVariants}
+          aria-labelledby="work-experience-heading"
+        >
+          <h2 id="work-experience-heading" className="text-2xl sm:text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
+            <FiBriefcase className="text-indigo-400 text-3xl" aria-hidden="true" />
             Work Experience
           </h2>
           <div className="relative pl-4 sm:pl-8">
@@ -183,10 +192,13 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Key Achievements */}
-        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
-            <FiAward className="text-indigo-400 text-3xl" />
+        <motion.section 
+          className="mb-12 sm:mb-16 bg-gray-800/50 p-6 lg:p-10 rounded-2xl border border-gray-700/50" 
+          variants={itemVariants}
+          aria-labelledby="achievements-heading"
+        >
+          <h2 id="achievements-heading" className="text-2xl sm:text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
+            <FiAward className="text-indigo-400 text-3xl" aria-hidden="true" />
             Key Achievements
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -196,7 +208,7 @@ const About = () => {
               transition={{ type: 'spring', stiffness: 300 }}
             >
               <h3 className="text-lg font-semibold text-indigo-400 mb-2">Academic Excellence</h3>
-              <p className="text-gray-300 text-sm">Ranked #1 in class with 99% average across Software Engineering and Full-Stack Web Development bootcamps</p>
+              <p className="text-gray-300 text-sm">Ranked #1 in class across Software Engineering and Full-Stack Web Development bootcamps</p>
             </motion.div>
             <motion.div
               className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 p-6 rounded-xl border border-indigo-500/30"
@@ -217,10 +229,13 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Skills */}
-        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
-            <FiCode className="text-indigo-400 text-2xl sm:text-3xl" />
+        <motion.section 
+          className="mb-12 sm:mb-16 bg-gray-800/50 p-6 lg:p-10 rounded-2xl border border-gray-700/50" 
+          variants={itemVariants}
+          aria-labelledby="skills-heading"
+        >
+          <h2 id="skills-heading" className="text-2xl sm:text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
+            <FiCode className="text-indigo-400 text-3xl" aria-hidden="true" />
             Technical Skills
           </h2>
           
@@ -312,10 +327,13 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Certificates */}
-        <motion.section className="mb-12 sm:mb-16 bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-2xl shadow-lg shadow-indigo-900/20 border border-gray-700" variants={itemVariants}>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
-            <FiAward className="text-indigo-400 text-2xl sm:text-3xl" />
+        <motion.section 
+          className="mb-12 sm:mb-16 bg-gray-800/50 p-6 lg:p-10 rounded-2xl border border-gray-700/50" 
+          variants={itemVariants}
+          aria-labelledby="certificates-heading"
+        >
+          <h2 id="certificates-heading" className="text-2xl sm:text-3xl font-bold mb-8 text-gray-100 flex items-center gap-3 font-display">
+            <FiAward className="text-indigo-400 text-3xl" aria-hidden="true" />
             Certificates
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -339,11 +357,12 @@ const About = () => {
                         href={cert.pdf}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium touch-manipulation flex-1"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors text-sm font-medium flex-1 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        aria-label={`View ${cert.title} certificate`}
                       >
-                        <FiEye />
+                        <FiEye aria-hidden="true" />
                         View Certificate
                       </motion.a>
                     )}
@@ -352,11 +371,12 @@ const About = () => {
                         href={cert.portfolio}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium touch-manipulation flex-1"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors text-sm font-medium flex-1 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        aria-label={`View ${cert.title} portfolio`}
                       >
-                        <FiExternalLink />
+                        <FiExternalLink aria-hidden="true" />
                         View Portfolio
                       </motion.a>
                     )}
@@ -364,11 +384,12 @@ const About = () => {
                       <motion.a
                         href={cert.pdf}
                         download
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-gray-700 text-gray-100 rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium border border-gray-600 touch-manipulation flex-1"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-gray-700 text-gray-100 rounded-lg hover:bg-gray-600 transition-colors text-sm font-medium border border-gray-600 flex-1 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-800"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
+                        aria-label={`Download ${cert.title} certificate`}
                       >
-                        <FiDownload />
+                        <FiDownload aria-hidden="true" />
                         Download
                       </motion.a>
                     )}

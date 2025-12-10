@@ -5,75 +5,62 @@ const CursorTrail = () => {
   const particlesRef = useRef([])
   const mouseRef = useRef({ x: 0, y: 0 })
   const animationFrameRef = useRef(null)
+  const rafActiveRef = useRef(false)
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext('2d')
+    const ctx = canvas.getContext('2d', { alpha: true })
     
-    // Set canvas size
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      const dpr = window.devicePixelRatio || 1
+      canvas.width = window.innerWidth * dpr
+      canvas.height = window.innerHeight * dpr
+      ctx.scale(dpr, dpr)
+      canvas.style.width = window.innerWidth + 'px'
+      canvas.style.height = window.innerHeight + 'px'
     }
     resizeCanvas()
-    window.addEventListener('resize', resizeCanvas)
+    window.addEventListener('resize', resizeCanvas, { passive: true })
 
-    // Code symbols for the trail
     const codeSymbols = [
-      '<', '>', '{', '}', '[', ']', '(', ')',
-      '/', '\\', '*', '+', '-', '=', '|', '&',
-      '%', '#', '@', '!', '?', ':', ';', '"',
-      "'", '`', '~', '^', '&', '|', '&&', '||',
-      '=>', '==', '===', '!=', '!==', '++', '--',
-      '{}', '[]', '()', '/*', '*/', '//'
+      '<', '>', '{', '}', '[', ']', '/', '*', '+', '-', '=', '|', '&', '%', '#', '@', '!', '?', ':', ';', '=>', '==', '==='
     ]
 
-    // Color palette for the symbols
-    const colors = [
-      '#6366f1', // Indigo
-      '#8b5cf6', // Purple
-      '#ec4899', // Pink
-      '#f59e0b', // Amber
-      '#10b981', // Emerald
-      '#3b82f6', // Blue
-      '#f97316', // Orange
-      '#06b6d4', // Cyan
-    ]
+    const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#10b981', '#3b82f6']
 
-    // Particle class with code symbols
     class Particle {
       constructor(x, y) {
         this.x = x
         this.y = y
         this.symbol = codeSymbols[Math.floor(Math.random() * codeSymbols.length)]
-        this.size = Math.random() * 16 + 12 // Font size
-        this.speedX = Math.random() * 3 - 1.5
-        this.speedY = Math.random() * 3 - 1.5
+        this.size = Math.random() * 12 + 10
+        this.speedX = Math.random() * 2 - 1
+        this.speedY = Math.random() * 2 - 1
         this.color = colors[Math.floor(Math.random() * colors.length)]
         this.life = 1
-        this.decay = Math.random() * 0.02 + 0.02
+        this.decay = Math.random() * 0.015 + 0.015
         this.rotation = Math.random() * Math.PI * 2
-        this.rotationSpeed = (Math.random() - 0.5) * 0.1
+        this.rotationSpeed = (Math.random() - 0.5) * 0.08
       }
 
       update() {
         this.x += this.speedX
         this.y += this.speedY
         this.life -= this.decay
-        this.size *= 0.98
+        this.size *= 0.99
         this.rotation += this.rotationSpeed
       }
 
       draw() {
         ctx.save()
-        ctx.globalAlpha = this.life
+        ctx.globalAlpha = this.life * 0.6
         ctx.fillStyle = this.color
         ctx.font = `bold ${this.size}px 'Courier New', monospace`
         ctx.textAlign = 'center'
         ctx.textBaseline = 'middle'
-        ctx.shadowBlur = 15
+        ctx.shadowBlur = 10
         ctx.shadowColor = this.color
         ctx.translate(this.x, this.y)
         ctx.rotate(this.rotation)
@@ -82,53 +69,53 @@ const CursorTrail = () => {
       }
     }
 
-    // Mouse move handler
     const handleMouseMove = (e) => {
       mouseRef.current.x = e.clientX
       mouseRef.current.y = e.clientY
 
-      // Create new particles at mouse position
-      for (let i = 0; i < 2; i++) {
-        particlesRef.current.push(
-          new Particle(e.clientX, e.clientY)
-        )
+      if (particlesRef.current.length < 80) {
+        for (let i = 0; i < 1; i++) {
+          particlesRef.current.push(new Particle(e.clientX, e.clientY))
+        }
       }
     }
 
-    // Animation loop
     const animate = () => {
+      if (!rafActiveRef.current) return
+      
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      // Update and draw particles
       for (let i = particlesRef.current.length - 1; i >= 0; i--) {
         const particle = particlesRef.current[i]
         particle.update()
         particle.draw()
 
-        // Remove dead particles
-        if (particle.life <= 0 || particle.size <= 8) {
+        if (particle.life <= 0 || particle.size <= 6) {
           particlesRef.current.splice(i, 1)
         }
       }
 
-      // Limit particle count
-      if (particlesRef.current.length > 100) {
-        particlesRef.current.splice(0, particlesRef.current.length - 100)
+      if (particlesRef.current.length > 80) {
+        particlesRef.current.splice(0, particlesRef.current.length - 80)
       }
 
       animationFrameRef.current = requestAnimationFrame(animate)
     }
 
-    // Start animation
-    animate()
+    const startAnimation = () => {
+      if (!rafActiveRef.current) {
+        rafActiveRef.current = true
+        animate()
+      }
+    }
 
-    // Event listeners
-    window.addEventListener('mousemove', handleMouseMove)
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    window.addEventListener('mousemove', startAnimation, { once: true, passive: true })
 
-    // Cleanup
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('resize', resizeCanvas)
+      rafActiveRef.current = false
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
@@ -140,9 +127,9 @@ const CursorTrail = () => {
       ref={canvasRef}
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-50"
       style={{ mixBlendMode: 'screen' }}
+      aria-hidden="true"
     />
   )
 }
 
 export default CursorTrail
-

@@ -7,8 +7,24 @@
     @apply scroll-smooth;
   }
 
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
-    @apply font-sans antialiased text-gray-100 bg-gray-900 overflow-x-hidden;
+    overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-sans antialiased text-gray-100 bg-gray-900;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     -webkit-font-smoothing: antialiased;
@@ -25,37 +41,37 @@
     min-width: 44px;
   }
   
-  /* Ensure images are responsive */
   img {
-    max-width: 100%;
-    height: auto;
+    @apply max-w-full h-auto;
   }
   
-  /* Prevent text overflow */
   p, span, div {
     word-wrap: break-word;
     overflow-wrap: break-word;
   }
 
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-indigo-500 rounded;
   }
 }
 
 @layer components {
   .loading-screen {
-    @apply flex justify-center items-center h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900;
+    @apply flex justify-center items-center h-screen bg-gradient-to-br from-gray-900 via-indigo-900/50 to-purple-900/50;
   }
 
   .loader {
-    @apply w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin;
+    @apply w-12 h-12 border-4 border-white/30 border-t-indigo-400 rounded-full animate-spin;
   }
 }
 
 @layer utilities {
-  /* Custom scrollbar */
   .scrollbar-custom::-webkit-scrollbar {
-    @apply w-2.5;
+    @apply w-2;
   }
 
   .scrollbar-custom::-webkit-scrollbar-track {
@@ -63,7 +79,7 @@
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    @apply bg-indigo-600 rounded-md;
+    @apply bg-indigo-600/50 rounded-md;
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb:hover {
@@ -71,8 +87,6 @@
   }
 }
 
-/* Apply custom scrollbar to body */
 body {
   @apply scrollbar-custom;
 }
-
