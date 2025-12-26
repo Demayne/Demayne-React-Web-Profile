@@ -53,108 +53,117 @@ const Home = () => {
         <div className="absolute inset-0 opacity-10 sm:opacity-20 pointer-events-none" style={{ background: 'radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)' }} aria-hidden="true" />
         
         <motion.div
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center relative z-10"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12 relative z-10"
           variants={containerVariants}
           initial="hidden"
           animate={heroInView ? 'visible' : 'hidden'}
         >
-          <motion.div className="flex flex-col gap-4 sm:gap-5 lg:gap-6 text-center lg:text-left" variants={itemVariants}>
+          {/* Mobile-First Content Layout */}
+          <motion.div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center" variants={itemVariants}>
+            {/* Main Content - Always First */}
+            <motion.div className="flex flex-col gap-5 sm:gap-6 text-center lg:text-left w-full" variants={itemVariants}>
+              {/* Badge */}
+              <motion.div
+                className="inline-block px-3 sm:px-4 py-1.5 bg-indigo-500/10 border border-indigo-400/20 rounded-full text-xs sm:text-sm font-medium text-indigo-400 w-fit mx-auto lg:mx-0"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={heroInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.1, duration: 0.4 }}
+              >
+                <span>Full Stack Developer</span>
+              </motion.div>
+              
+              {/* Name - Prominent */}
+              <motion.h1 
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-bold leading-tight text-gray-100 break-words"
+                variants={itemVariants}
+              >
+                Hi, I'm <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-display">Demayne Govender</span>
+              </motion.h1>
+              
+              {/* Value Proposition - Key Info */}
+              <motion.p 
+                className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words font-medium"
+                variants={itemVariants}
+              >
+                Full-Stack Engineer delivering scalable web solutions and enterprise automation systems. Top-ranked graduate with a proven track record of architecting and deploying 15+ production applications across modern technology stacks.
+              </motion.p>
+              
+              {/* CTAs - Prominent */}
+              <motion.div 
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap justify-center lg:justify-start pt-2"
+                variants={itemVariants}
+              >
+                <Link 
+                  to="/projects" 
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg active:shadow-xl transition-all duration-200 text-sm sm:text-base min-h-[48px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                >
+                  View My Work
+                  <FiArrowRight aria-hidden="true" />
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gray-800 text-indigo-400 font-semibold rounded-lg border-2 border-indigo-500 active:bg-indigo-500 active:text-white transition-all duration-200 text-sm sm:text-base min-h-[48px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                >
+                  Get In Touch
+                </Link>
+              </motion.div>
+              
+              {/* Social Links */}
+              <motion.div 
+                className="flex gap-4 justify-center lg:justify-start pt-2"
+                variants={itemVariants}
+                role="list"
+                aria-label="Social links"
+              >
+                <a
+                  href="https://github.com/Demayne"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 text-gray-100 text-xl transition-colors duration-200 active:bg-indigo-500 active:text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 min-w-[48px] min-h-[48px]"
+                  aria-label="GitHub profile"
+                >
+                  <FiGithub aria-hidden="true" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/demayne-govender-452890316"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 text-gray-100 text-xl transition-colors duration-200 active:bg-indigo-500 active:text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 min-w-[48px] min-h-[48px]"
+                  aria-label="LinkedIn profile"
+                >
+                  <FiLinkedin aria-hidden="true" />
+                </a>
+                <a
+                  href="mailto:govender.demayne@gmail.com"
+                  className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-800 text-gray-100 text-xl transition-colors duration-200 active:bg-indigo-500 active:text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 min-w-[48px] min-h-[48px]"
+                  aria-label="Send email"
+                >
+                  <FiMail aria-hidden="true" />
+                </a>
+              </motion.div>
+            </motion.div>
+            
+            {/* Logo - Hidden on Mobile, Shown on Tablet+ */}
             <motion.div
-              className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-indigo-500/10 border border-indigo-400/20 rounded-full text-xs sm:text-sm font-medium text-indigo-400 w-fit mx-auto lg:mx-0"
-              initial={{ opacity: 0, scale: 0.9 }}
+              className="hidden md:flex lg:flex justify-center items-center order-first lg:order-last"
+              variants={itemVariants}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.2, duration: 0.4 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <span>Full Stack Developer</span>
+              <div className="w-full max-w-sm lg:max-w-md h-72 lg:h-96 flex items-center justify-center bg-gray-800/50 rounded-2xl shadow-2xl shadow-indigo-500/10 p-6 lg:p-8 relative overflow-hidden border border-gray-700/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent" aria-hidden="true" />
+                <img 
+                  src="/Demayne Govender Logo.png" 
+                  alt="Demayne Govender - Full-Stack Engineer Portfolio Logo" 
+                  className="w-full h-full object-contain relative z-10 brightness-110"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </motion.div>
-            
-            <motion.h1 
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-100 break-words"
-              variants={itemVariants}
-            >
-              Hi, I'm <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-display">Demayne Govender</span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 break-words"
-              variants={itemVariants}
-            >
-              Full-Stack Engineer delivering scalable web solutions and enterprise automation systems. Top-ranked graduate with a proven track record of architecting and deploying 15+ production applications across modern technology stacks.
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap justify-center lg:justify-start"
-              variants={itemVariants}
-            >
-              <Link 
-                to="/projects" 
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-md active:shadow-lg transition-all duration-200 text-sm sm:text-base min-h-[44px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-              >
-                View My Work
-                <FiArrowRight aria-hidden="true" />
-              </Link>
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-gray-800 text-indigo-400 font-semibold rounded-lg border-2 border-indigo-500 active:bg-indigo-500 active:text-white transition-all duration-200 text-sm sm:text-base min-h-[44px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-              >
-                Get In Touch
-              </Link>
-            </motion.div>
-            
-            <motion.div 
-              className="flex gap-3 sm:gap-4 mt-2 justify-center lg:justify-start"
-              variants={itemVariants}
-              role="list"
-              aria-label="Social links"
-            >
-              <a
-                href="https://github.com/Demayne"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gray-800 text-gray-100 text-lg sm:text-xl transition-colors duration-200 active:bg-indigo-500 active:text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 min-w-[44px] min-h-[44px]"
-                aria-label="GitHub profile"
-              >
-                <FiGithub aria-hidden="true" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/demayne-govender-452890316"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gray-800 text-gray-100 text-lg sm:text-xl transition-colors duration-200 active:bg-indigo-500 active:text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 min-w-[44px] min-h-[44px]"
-                aria-label="LinkedIn profile"
-              >
-                <FiLinkedin aria-hidden="true" />
-              </a>
-              <a
-                href="mailto:govender.demayne@gmail.com"
-                className="flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gray-800 text-gray-100 text-lg sm:text-xl transition-colors duration-200 active:bg-indigo-500 active:text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 min-w-[44px] min-h-[44px]"
-                aria-label="Send email"
-              >
-                <FiMail aria-hidden="true" />
-              </a>
-            </motion.div>
-          </motion.div>
-          
-          <motion.div
-            className="flex justify-center items-center order-first lg:order-last"
-            variants={itemVariants}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <div className="w-full max-w-xs sm:max-w-sm md:max-w-md h-64 sm:h-72 md:h-80 lg:h-96 flex items-center justify-center bg-gray-800/50 rounded-xl sm:rounded-2xl shadow-2xl shadow-indigo-500/10 p-4 sm:p-6 lg:p-8 relative overflow-hidden border border-gray-700/50">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent" aria-hidden="true" />
-              <img 
-                src="/Demayne Govender Logo.png" 
-                alt="Demayne Govender - Full-Stack Engineer Portfolio Logo" 
-                className="w-full h-full object-contain relative z-10 brightness-110"
-                width="400"
-                height="400"
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              />
-            </div>
           </motion.div>
         </motion.div>
         
