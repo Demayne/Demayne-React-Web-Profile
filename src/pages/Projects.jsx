@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FiGithub, FiCode, FiDatabase, FiLayers } from 'react-icons/fi'
+import SEO from '../components/SEO'
 
 const Projects = () => {
   const [filter, setFilter] = useState('all')
@@ -108,7 +109,14 @@ const Projects = () => {
   }
 
   return (
-    <div className="pt-24 min-h-screen bg-gray-900 overflow-x-hidden px-2 sm:px-0" ref={ref}>
+    <>
+      <SEO
+        title="Projects | Demayne Govender - Full-Stack Engineer Portfolio"
+        description="Explore 15+ production-ready full-stack applications built with React, Node.js, Python, MongoDB, and MySQL. View my portfolio of web development projects."
+        keywords="React Projects, Node.js Projects, Full Stack Projects, Web Development Portfolio, JavaScript Projects, Python Projects, MERN Stack Projects"
+        ogImage="https://demayne-govender-portfolio.vercel.app/Demayne%20Govender%20Logo.png"
+      />
+      <section className="pt-24 min-h-screen bg-gray-900 overflow-x-hidden px-2 sm:px-0" ref={ref}>
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
         initial="hidden"
@@ -219,7 +227,8 @@ const Projects = () => {
           </a>
         </motion.section>
       </motion.div>
-    </div>
+    </section>
+    </>
   )
 }
 
