@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { FiGithub, FiLinkedin, FiMail, FiArrowRight, FiCode, FiDatabase, FiCpu } from 'react-icons/fi'
 import { useInView } from 'react-intersection-observer'
+import SEO from '../components/SEO'
 
 const Home = () => {
   const [heroRef, heroInView] = useInView({ threshold: 0.05, triggerOnce: true })
@@ -35,7 +36,14 @@ const Home = () => {
   ]
 
   return (
-    <div className="pt-20">
+    <>
+      <SEO
+        title="Demayne Govender | Full-Stack Engineer - Portfolio"
+        description="Full-Stack Engineer delivering scalable web solutions and enterprise automation systems. Top-ranked graduate with 15+ production applications. React, Node.js, Python developer."
+        keywords="Full Stack Developer, React Developer, JavaScript, Python, Node.js, Web Developer, Software Engineer, Portfolio, South Africa, MERN Stack"
+        ogImage="https://demayne-govender-portfolio.vercel.app/Demayne%20Govender%20Logo.png"
+      />
+      <div className="pt-20">
       <section 
         className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-gray-900 via-indigo-900/30 to-purple-900/30 overflow-hidden py-12 sm:py-0" 
         ref={heroRef}
@@ -138,11 +146,13 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-transparent" aria-hidden="true" />
               <img 
                 src="/Demayne Govender Logo.png" 
-                alt="Demayne Govender Logo" 
+                alt="Demayne Govender - Full-Stack Engineer Portfolio Logo" 
                 className="w-full h-full object-contain relative z-10 brightness-110"
                 width="400"
                 height="400"
                 loading="eager"
+                fetchpriority="high"
+                decoding="async"
               />
             </div>
           </motion.div>
@@ -223,6 +233,7 @@ const Home = () => {
         </motion.div>
       </section>
     </div>
+    </>
   )
 }
 

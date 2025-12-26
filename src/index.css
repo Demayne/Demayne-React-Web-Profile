@@ -43,6 +43,12 @@
   
   img {
     @apply max-w-full h-auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  img[loading="lazy"] {
+    content-visibility: auto;
   }
   
   p, span, div {

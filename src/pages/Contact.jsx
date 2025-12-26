@@ -104,7 +104,14 @@ const Contact = () => {
   }
 
   return (
-    <div className="pt-24 min-h-screen bg-gray-900 relative overflow-x-hidden px-2 sm:px-0" ref={ref}>
+    <>
+      <SEO
+        title="Contact | Demayne Govender - Full-Stack Engineer"
+        description="Get in touch with Demayne Govender, Full-Stack Engineer. Available for freelance projects, collaborations, and opportunities. React, Node.js, Python developer."
+        keywords="Contact Full Stack Developer, Hire React Developer, Web Developer Contact, Software Engineer Contact, Freelance Developer"
+        ogImage="https://demayne-govender-portfolio.vercel.app/Demayne%20Govender%20Logo.png"
+      />
+      <section className="pt-24 min-h-screen bg-gray-900 relative overflow-x-hidden px-2 sm:px-0" ref={ref}>
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full overflow-x-hidden"
         initial="hidden"
@@ -260,7 +267,8 @@ const Contact = () => {
           </motion.section>
         </div>
       </motion.div>
-    </div>
+    </section>
+    </>
   )
 }
 
