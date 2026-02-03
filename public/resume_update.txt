@@ -1,0 +1,75 @@
+DEMAYNE GOVENDER
+FULL STACK ENGINEER
+Johannesburg, 1459 | (069) 356 3459 | demaynegovender@gmail.com | linkedin.com/in/demayne-govender | github.com/demayne-govender
+
+================================================================================
+PROFESSIONAL SUMMARY
+================================================================================
+
+Full-Stack Engineer specializing in scalable web applications and enterprise automation systems. Delivered measurable business impact—reducing manual processing by 85% and improving system reliability by 30%. Built and deployed 15+ production-ready applications using MERN stack, Python, and cloud technologies.
+
+================================================================================
+TECHNICAL SKILLS
+================================================================================
+
+Languages:        JavaScript (ES6+), TypeScript, Python, Java, SQL, HTML5, CSS3
+Frontend:         React, Redux, Tailwind CSS, Bootstrap, Responsive Design
+Backend:          Node.js, Express.js, RESTful APIs, Microservices, JWT Authentication
+Databases/Cloud:  MongoDB, MySQL, PostgreSQL, Docker, CI/CD, Git, Azure, AWS
+Automation:       Automation Anywhere, UiPath, Postman, Webpack
+Practices:        Agile/Scrum, Test-Driven Development (TDD), DevOps, Code Review, SOLID Principles
+
+================================================================================
+WORK EXPERIENCE
+================================================================================
+
+LOGISTICS & INVOICING COORDINATOR | Barnes Black Logistics          10/2024 – Present
+• Orchestrate end-to-end courier and freight operations, managing 50+ daily shipments with 99.5% on-time delivery rate through data-driven process optimization
+• Streamline high-volume invoicing and financial reconciliation workflows, maintaining 100% billing accuracy
+• Analyze supply chain workflows to identify and document technical automation opportunities for future efficiency gains
+
+JUNIOR SOFTWARE DEVELOPER | CIBA Industries                         08/2023 – 12/2023
+• Engineered automated Time Sheet Email Processing System using Python and Automation Anywhere, reducing manual payroll processing by 85% (4+ hours to under 5 minutes)
+• Developed parsing algorithm with 99.9% accuracy, eliminating human error and reducing payroll discrepancies by 95%
+• Optimized existing RPA infrastructure, increasing system reliability from 70% to 99.7% uptime and freeing 20+ hours weekly for engineering initiatives
+• Collaborated with stakeholders to design technical specifications and deliver automation projects with measurable business impact
+
+================================================================================
+PROJECTS
+================================================================================
+
+CREDENTIAL MANAGEMENT SYSTEM | React, Node.js, Express.js, MongoDB, JWT
+• Developed secure platform for organizations to manage system credentials with role-based access control (RBAC)
+• Implemented encryption at rest and in transit, built RESTful API supporting full CRUD operations
+• GitHub: github.com/demayne-govender/credential-management
+
+DATABASE PROJECT MANAGEMENT SYSTEM | React, MySQL, Node.js
+• Built comprehensive project management system for construction companies with CLI and web interfaces
+• Engineered normalized relational database schema ensuring data integrity and supporting complex reporting queries
+• Designed multi-layered architecture with dedicated database, repository, and presentation layers
+• GitHub: github.com/demayne-govender/project-management
+
+REACT PORTFOLIO WEBSITE | React, Tailwind CSS, Framer Motion, Vite
+• Developed responsive, SEO-optimized portfolio showcasing 15+ projects with modern UI/UX
+• Implemented performance optimizations including code splitting, lazy loading, and optimized assets
+• Live: demaynegovender.vercel.app
+
+================================================================================
+EDUCATION & CERTIFICATIONS
+================================================================================
+
+FULL STACK WEB & SOFTWARE ENGINEERING | HyperionDev                 06/2024 – 11/2025
+• Graduated #1 in class (99% average) in intensive, project-based engineering program
+• Developed and deployed 15+ production-ready full-stack applications (MERN, Python, Java)
+• Engineered scalable microservices architectures with JWT authentication and role-based access control
+• Implemented machine learning pipelines (Python, scikit-learn, pandas) improving model accuracy by 20%
+• Applied TDD, CI/CD pipeline construction, Git version control, and Agile methodologies throughout
+
+SOFTWARE ENGINEERING BOOTCAMP | HyperionDev                         06/2023 – 01/2024
+• Completed foundational software engineering training with focus on Python, Java, and OOP principles
+
+RPA PROFESSIONAL CERTIFICATION | Automation Anywhere                08/2023 – 11/2023
+• Certified in enterprise robotic process automation design, development, and deployment
+
+AWS CLOUD PRACTITIONER | Amazon Web Services                        In Progress
+• Building cloud infrastructure expertise for scalable application deployment
