@@ -1,10 +1,12 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FiBriefcase, FiAward, FiCode, FiDownload, FiEye, FiLayers, FiDatabase, FiShield, FiCloud, FiTool, FiExternalLink } from 'react-icons/fi'
+import { useState } from 'react'
+import { FiBriefcase, FiAward, FiCode, FiEye, FiLayers, FiDatabase, FiCloud, FiTool, FiExternalLink, FiDownload, FiX } from 'react-icons/fi'
 import SEO from '../components/SEO'
 
 const About = () => {
   const [ref, inView] = useInView({ threshold: 0.05, triggerOnce: true })
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false)
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,16 +27,16 @@ const About = () => {
     },
   }
 
-  // Streamlined work experience - only key highlights
+  // Work experience ordered: Logistics (current), CIBA, HyperionDev
   const workExperience = [
     {
-      title: 'Full-Stack Web & Software Engineer',
-      company: 'HyperionDev Bootcamp',
-      period: 'Jun 2023 - Nov 2025',
+      title: 'Logistics & Invoicing Coordinator',
+      company: 'Barnes Black Logistics',
+      period: 'Oct 2024 - Present',
       highlights: [
-        'Architected 15+ production-ready full-stack applications (React, Node.js, MongoDB, MySQL)',
-        'Built scalable microservices with JWT auth, RESTful APIs, and responsive UI/UX',
-        'Ranked #1 in class across Software Engineering and Full-Stack Web Development programs',
+        'Manage 50+ daily shipments with 99.5% on-time delivery through data-driven optimization',
+        'Streamline invoicing workflows achieving 100% accuracy via automated reconciliation',
+        'Identify and document technical automation opportunities within supply chain workflows',
       ],
     },
     {
@@ -44,15 +46,17 @@ const About = () => {
       highlights: [
         'Engineered automated payroll system reducing processing time by 85% (4+ hours → 5 minutes)',
         'Optimized RPA infrastructure improving uptime from 70% to 99.7%, freeing 20+ hours weekly',
+        'Collaborated with stakeholders to design technical specifications and deliver automation projects',
       ],
     },
     {
-      title: 'Logistics & Invoicing Coordinator',
-      company: 'Barnes Black Logistics',
-      period: 'Oct 2024 - Present',
+      title: 'Full-Stack Web & Software Engineer',
+      company: 'HyperionDev Bootcamp',
+      period: 'Jun 2024 - Nov 2025',
       highlights: [
-        'Manage 50+ daily shipments with 99.5% on-time delivery through data-driven optimization',
-        'Streamline invoicing workflows achieving 100% accuracy via automated reconciliation',
+        'Architected 15+ production-ready full-stack applications (React, Node.js, MongoDB, MySQL)',
+        'Built scalable microservices with JWT auth, RESTful APIs, and responsive UI/UX',
+        'Ranked #1 in class across Software Engineering and Full-Stack Web Development programs',
       ],
     },
   ]
@@ -74,6 +78,14 @@ const About = () => {
       badge: 'Ranked #1',
       pdf: '/Full_Stack_Certificate.pdf',
       portfolio: 'https://www.hyperiondev.com/portfolio/DG23030008394/',
+    },
+    {
+      title: 'Software Engineer Bootcamp',
+      issuer: 'HyperionDev',
+      date: 'Jan 2024',
+      badge: 'Ranked #2',
+      pdf: '/Software_Engineer_Certificate.pdf',
+      portfolio: 'https://www.hyperiondev.com/portfolio/DG24070015238/',
     },
     {
       title: 'Certified Advanced RPA Professional',
@@ -109,17 +121,34 @@ const About = () => {
           <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-8 px-2">
             I architect and deploy production-ready solutions using React, Node.js, and Python. With 15+ applications in production, I focus on building systems that drive measurable business impact—from reducing operational costs by 85% to scaling microservices handling concurrent user loads.
           </p>
-          <motion.a
-            href="/Demayne_Govender_Resume.pdf"
-            download="Demayne_Govender_Resume.pdf"
-            className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg active:scale-95 transition-all duration-200 text-sm sm:text-base min-h-[44px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-            whileHover={{ scale: 1.02 }}
+          <motion.button
+            onClick={() => setIsResumeModalOpen(true)}
+            className="group inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300 text-sm sm:text-base min-h-[44px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900 relative overflow-hidden"
+            whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            aria-label="Download resume PDF"
+            aria-label="View resume"
           >
-            <FiDownload aria-hidden="true" />
-            Download Resume
-          </motion.a>
+            <motion.span
+              className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            />
+            <motion.span
+              className="relative z-10 flex items-center gap-2"
+              initial={{ x: 0 }}
+              whileHover={{ x: 2 }}
+              transition={{ type: "spring", stiffness: 500, damping: 15 }}
+            >
+              <FiEye aria-hidden="true" className="text-lg" />
+              <span>View Resume</span>
+            </motion.span>
+            <motion.span
+              className="relative z-10 inline-block text-xl font-bold"
+              initial={{ x: 0 }}
+              whileHover={{ x: 5 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            >
+              →
+            </motion.span>
+          </motion.button>
         </motion.header>
 
         {/* Core Tech Stack - What recruiters scan first */}
@@ -227,71 +256,175 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Certifications - Simplified */}
+        {/* Certifications - Modern Free-Flowing Layout */}
         <motion.section 
-          className="mb-8 sm:mb-12 lg:mb-16 bg-gray-800/50 p-4 sm:p-6 lg:p-10 rounded-xl sm:rounded-2xl border border-gray-700/50" 
+          className="mb-8 sm:mb-12 lg:mb-16" 
           variants={itemVariants}
           aria-labelledby="certificates-heading"
         >
-          <h2 id="certificates-heading" className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
+          <h2 id="certificates-heading" className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display px-4 sm:px-0">
             <FiAward className="text-indigo-400 text-2xl sm:text-3xl flex-shrink-0" aria-hidden="true" />
             <span>Certifications</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
-            {certificates.map((cert, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-800 p-4 sm:p-5 lg:p-6 rounded-lg sm:rounded-xl border-2 border-gray-700 sm:hover:border-indigo-500 transition-colors duration-200 flex flex-col"
-                variants={itemVariants}
-              >
-                <div className="flex items-start justify-between gap-2 mb-3">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-100 mb-1 leading-tight break-words">
-                      {cert.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-indigo-400 font-medium break-words">{cert.issuer}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
+            {certificates.map((cert, index) => {
+              const gradientColors = [
+                'from-indigo-500/20 via-purple-500/20 to-pink-500/20',
+                'from-blue-500/20 via-cyan-500/20 to-teal-500/20',
+                'from-purple-500/20 via-pink-500/20 to-red-500/20',
+              ]
+              const borderColors = [
+                'border-indigo-500/30 hover:border-indigo-400/60',
+                'border-blue-500/30 hover:border-blue-400/60',
+                'border-purple-500/30 hover:border-purple-400/60',
+              ]
+              const iconColors = [
+                'text-indigo-400',
+                'text-blue-400',
+                'text-purple-400',
+              ]
+              
+              return (
+                <motion.div
+                  key={index}
+                  className="group relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm p-5 sm:p-6 rounded-2xl border border-gray-700/50 hover:border-opacity-100 transition-all duration-300 flex flex-col overflow-hidden"
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
+                  variants={{
+                    hidden: { opacity: 0, y: 20, scale: 0.95 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      transition: {
+                        delay: index * 0.1,
+                        duration: 0.5,
+                        type: "spring",
+                        stiffness: 100,
+                      },
+                    },
+                  }}
+                  whileHover={{ y: -4, scale: 1.02 }}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${gradientColors[index % 3]} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
+                  
+                  <div className="relative z-10 flex-1 flex flex-col">
+                    <div className="flex items-start justify-between gap-3 mb-4">
+                      <div className="flex-1 min-w-0">
+                        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${gradientColors[index % 3]} border ${borderColors[index % 3]} mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                          <FiAward className={`${iconColors[index % 3]} text-xl`} aria-hidden="true" />
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-100 mb-2 leading-tight break-words group-hover:text-white transition-colors">
+                          {cert.title}
+                        </h3>
+                        <p className="text-sm text-indigo-400 font-medium break-words">{cert.issuer}</p>
+                      </div>
+                      {cert.badge && (
+                        <motion.span 
+                          className="text-xs font-bold bg-gradient-to-r from-indigo-500/30 to-purple-500/30 text-indigo-300 px-3 py-1 rounded-full border border-indigo-500/40 flex-shrink-0 whitespace-nowrap backdrop-blur-sm"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          {cert.badge}
+                        </motion.span>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-5">
+                      <span className="text-xs text-gray-400 font-medium">{cert.date}</span>
+                    </div>
+                    
+                    <div className="flex flex-col gap-2.5 mt-auto pt-4 border-t border-gray-700/50">
+                      {cert.pdf && (
+                        <motion.a
+                          href={cert.pdf}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/btn flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:from-indigo-500 hover:to-indigo-600 transition-all duration-200 text-sm font-semibold min-h-[44px] shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          aria-label={`View ${cert.title} certificate`}
+                        >
+                          <FiEye aria-hidden="true" className="group-hover/btn:scale-110 transition-transform" />
+                          <span>View Certificate</span>
+                        </motion.a>
+                      )}
+                      {cert.portfolio && (
+                        <motion.a
+                          href={cert.portfolio}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/btn flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-500 hover:to-purple-600 transition-all duration-200 text-sm font-semibold min-h-[44px] shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          aria-label={`View ${cert.title} portfolio`}
+                        >
+                          <FiExternalLink aria-hidden="true" className="group-hover/btn:scale-110 transition-transform" />
+                          <span>View Portfolio</span>
+                        </motion.a>
+                      )}
+                    </div>
                   </div>
-                  {cert.badge && (
-                    <span className="text-xs font-semibold bg-indigo-500/20 text-indigo-400 px-2 py-0.5 sm:py-1 rounded-full border border-indigo-500/30 flex-shrink-0 whitespace-nowrap">
-                      {cert.badge}
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-gray-400 mb-3 sm:mb-4">{cert.date}</p>
-                <div className="flex flex-col sm:flex-row gap-2 mt-auto pt-3 sm:pt-4">
-                  {cert.pdf && (
-                    <motion.a
-                      href={cert.pdf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-indigo-600 text-white rounded-lg active:bg-indigo-700 transition-colors text-sm font-medium flex-1 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
-                      whileTap={{ scale: 0.98 }}
-                      aria-label={`View ${cert.title} certificate`}
-                    >
-                      <FiEye aria-hidden="true" />
-                      View
-                    </motion.a>
-                  )}
-                  {cert.portfolio && (
-                    <motion.a
-                      href={cert.portfolio}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 px-4 py-2.5 h-11 bg-purple-600 text-white rounded-lg active:bg-purple-700 transition-colors text-sm font-medium flex-1 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-800"
-                      whileTap={{ scale: 0.98 }}
-                      aria-label={`View ${cert.title} portfolio`}
-                    >
-                      <FiExternalLink aria-hidden="true" />
-                      Portfolio
-                    </motion.a>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })}
           </div>
         </motion.section>
       </motion.div>
     </article>
+
+    <AnimatePresence>
+      {isResumeModalOpen && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsResumeModalOpen(false)}
+        >
+          <motion.div
+            className="relative w-full max-w-5xl h-[90vh] bg-gray-900 rounded-xl shadow-2xl overflow-hidden flex flex-col"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-gray-700 bg-gradient-to-r from-gray-800 to-gray-900">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-100">Resume</h2>
+              <div className="flex items-center gap-2 sm:gap-3">
+                <motion.a
+                  href="/Demayne_Govender_Resume.pdf"
+                  download="Demayne_Govender_Resume.pdf"
+                  className="group/btn flex items-center justify-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-500 hover:to-purple-500 transition-all duration-200 text-sm font-semibold min-h-[44px] shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                  whileHover={{ scale: 1.05, y: -1 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label="Download resume"
+                >
+                  <FiDownload aria-hidden="true" className="group-hover/btn:animate-bounce" />
+                  <span>Download</span>
+                </motion.a>
+                <motion.button
+                  onClick={() => setIsResumeModalOpen(false)}
+                  className="p-2 sm:p-2.5 text-gray-400 hover:text-gray-100 hover:bg-gray-700 rounded-lg transition-all duration-200 min-h-[44px] min-w-[44px] flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label="Close resume viewer"
+                >
+                  <FiX className="text-xl" aria-hidden="true" />
+                </motion.button>
+              </div>
+            </div>
+            <div className="flex-1 overflow-hidden">
+              <iframe
+                src="/Demayne_Govender_Resume.pdf"
+                className="w-full h-full border-0"
+                title="Resume PDF Viewer"
+                aria-label="Resume PDF viewer"
+              />
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
     </>
   )
 }

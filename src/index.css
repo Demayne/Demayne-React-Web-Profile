@@ -91,6 +91,18 @@
   .scrollbar-custom::-webkit-scrollbar-thumb:hover {
     @apply bg-indigo-500;
   }
+
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  .bg-pos-0 {
+    background-position: 0% 50%;
+  }
+
+  .bg-pos-100 {
+    background-position: 100% 50%;
+  }
 }
 
 body {
