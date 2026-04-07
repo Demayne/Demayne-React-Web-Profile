@@ -66,7 +66,7 @@ const About = () => {
     'Frontend': ['React', 'JavaScript (ES6+)', 'TypeScript', 'Tailwind CSS', 'Redux'],
     'Backend': ['Node.js', 'Express.js', 'Python', 'Django', 'RESTful APIs'],
     'Databases': ['MongoDB', 'MySQL', 'SQLite', 'Database Design'],
-    'Cloud & DevOps': ['Docker', 'CI/CD', 'Git', 'GitHub', 'Azure (In Progress)'],
+    'Cloud & DevOps': ['Docker', 'CI/CD', 'Git', 'GitHub', 'Azure'],
     'Automation': ['Automation Anywhere', 'UiPath', 'RPA Development'],
   }
 
@@ -254,6 +254,90 @@ const About = () => {
               </motion.div>
             ))}
           </div>
+        </motion.section>
+
+        {/* Featured Projects */}
+        <motion.section
+          className="mb-8 sm:mb-12 lg:mb-16 bg-gray-800/50 p-4 sm:p-6 lg:p-10 rounded-xl sm:rounded-2xl border border-gray-700/50"
+          variants={itemVariants}
+          aria-labelledby="projects-heading"
+        >
+          <h2 id="projects-heading" className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 text-gray-100 flex items-center gap-2 sm:gap-3 font-display">
+            <FiCode className="text-indigo-400 text-2xl sm:text-3xl flex-shrink-0" aria-hidden="true" />
+            <span>Featured Projects</span>
+          </h2>
+
+          <motion.div
+            className="group relative bg-gradient-to-br from-gray-800 to-gray-900 p-5 sm:p-6 lg:p-8 rounded-xl border border-gray-700 hover:border-indigo-500/50 transition-colors duration-200 overflow-hidden"
+            initial="hidden"
+            animate={inView ? 'visible' : 'hidden'}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            }}
+            whileHover={{ y: -2 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+            <div className="relative z-10">
+              <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-100 mb-1">Credential Management System</h3>
+                  <p className="text-sm text-indigo-400 font-medium">Full-Stack Web Application</p>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-500/20 text-green-400 text-xs font-bold rounded-full border border-green-500/40">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                    Live on Azure
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-indigo-500/20 text-indigo-300 text-xs font-bold rounded-full border border-indigo-500/40">
+                    Featured
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-5">
+                A centralized credential management platform enabling organizations to securely store, manage, and control access to system credentials across multiple organizational units. Features AES-256-CBC encryption at rest, JWT authentication with refresh token rotation, role-based access control, and a full audit trail for all credential access and modifications.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                {[
+                  'AES-256-CBC encrypted credential storage',
+                  'Role-based access control (Admin / Management / User)',
+                  'JWT auth with refresh token rotation & account lockout',
+                  'Comprehensive audit logging for all credential access',
+                ].map((point, i) => (
+                  <div key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                    <span className="text-indigo-400 font-bold mt-0.5 flex-shrink-0 text-xs">▸</span>
+                    <span>{point}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {['React 18', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'AES-256', 'Azure', 'Vite', 'SCSS'].map((tech, i) => (
+                  <span key={i} className="px-2.5 py-1 bg-gray-800/80 border border-gray-700 rounded-md text-xs font-medium text-gray-300">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-3 pt-4 border-t border-gray-700/50">
+                <motion.a
+                  href="https://github.com/Demayne/Credential-Management-System"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-gray-700 hover:bg-gray-600 text-gray-100 text-sm font-semibold rounded-lg transition-colors duration-200 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label="View Credential Management System on GitHub"
+                >
+                  <FiExternalLink aria-hidden="true" />
+                  <span>View on GitHub</span>
+                </motion.a>
+              </div>
+            </div>
+          </motion.div>
         </motion.section>
 
         {/* Certifications - Modern Free-Flowing Layout */}

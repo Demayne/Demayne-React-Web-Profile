@@ -12,11 +12,12 @@ const Projects = () => {
     {
       id: 1,
       title: 'Credential Management System',
-      description: 'A comprehensive system for managing credentials securely with user authentication and role-based access control.',
-      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+      description: 'A centralized credential management platform for organizations to securely store and control access to system credentials across organizational units. Features AES-256-CBC encryption, JWT auth, role-based access control, and full audit logging. Live on Azure.',
+      tech: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'AES-256', 'Azure'],
       github: 'https://github.com/Demayne/Credential-Management-System',
       category: 'fullstack',
       featured: true,
+      liveOnAzure: true,
     },
     {
       id: 2,
@@ -178,11 +179,19 @@ const Projects = () => {
                 <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-indigo-500/20 rounded-lg sm:rounded-xl text-2xl sm:text-3xl lg:text-4xl text-indigo-400 border border-indigo-500/30 flex-shrink-0" aria-hidden="true">
                   {getCategoryIcon(project.category)}
                 </div>
-                {project.featured && (
-                  <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg shadow-indigo-500/50 flex-shrink-0">
-                    Featured
-                  </span>
-                )}
+                <div className="flex flex-col items-end gap-1.5 flex-shrink-0">
+                  {project.liveOnAzure && (
+                    <span className="inline-flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded-full border border-green-500/40">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      Live on Azure
+                    </span>
+                  )}
+                  {project.featured && (
+                    <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg shadow-indigo-500/50">
+                      Featured
+                    </span>
+                  )}
+                </div>
               </div>
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-3 text-gray-100 leading-tight break-words">
                 {project.title}
