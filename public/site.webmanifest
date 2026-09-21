@@ -1,0 +1,12 @@
+{
+  "name": "Demayne Govender | Full-Stack Engineer",
+  "short_name": "Demayne",
+  "description": "Portfolio of Demayne Govender, full-stack engineer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "icons": [
+    { "src": "/logo.png", "sizes": "500x500", "type": "image/png", "purpose": "any" }
+  ]
+}

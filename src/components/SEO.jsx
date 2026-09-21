@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const SEO = ({ title, description, keywords, ogImage, ogType = 'website' }) => {
+const SEO = ({ title, description, keywords, ogImage, ogType = 'website', canonicalPath, noindex = false }) => {
   const location = useLocation()
-  const baseUrl = 'https://demayne-govender-portfolio.vercel.app'
-  const canonicalUrl = `${baseUrl}${location.pathname}`
+  const baseUrl = 'https://demaynegovenderprofile.vercel.app'
+  // Section URLs (/about, /projects...) render the same one-page document, so they
+  // point search engines at a single canonical URL instead of competing duplicates.
+  const canonicalUrl = `${baseUrl}${canonicalPath ?? location.pathname}`
 
   useEffect(() => {
     // Update document title
@@ -42,6 +44,7 @@ const SEO = ({ title, description, keywords, ogImage, ogType = 'website' }) => {
       updateMetaTag('twitter:title', title)
     }
     
+    updateMetaTag('robots', noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1')
     updateMetaTag('og:url', canonicalUrl, true)
     updateMetaTag('og:type', ogType, true)
     
@@ -82,7 +85,7 @@ const SEO = ({ title, description, keywords, ogImage, ogType = 'website' }) => {
       document.head.appendChild(scriptTag)
     }
     scriptTag.textContent = JSON.stringify(structuredData)
-  }, [title, description, keywords, ogImage, ogType, canonicalUrl])
+  }, [title, description, keywords, ogImage, ogType, canonicalUrl, noindex])
 
   return null
 }

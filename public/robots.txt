@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://demayne-govender-portfolio.vercel.app/sitemap.xml
+Sitemap: https://demaynegovenderprofile.vercel.app/sitemap.xml
 

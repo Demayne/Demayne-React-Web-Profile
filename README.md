@@ -270,7 +270,7 @@ This project is private and proprietary.
 
 **Demayne Govender**
 - Email: govender.demayne@gmail.com
-- LinkedIn: [demayne-govender-452890316](https://www.linkedin.com/in/demayne-govender-452890316)
+- LinkedIn: [demaynegovender](https://www.linkedin.com/in/demaynegovender)
 - GitHub: [@Demayne](https://github.com/Demayne)
 
 ---

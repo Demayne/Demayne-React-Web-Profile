@@ -1,48 +1,75 @@
 /** @type {import('tailwindcss').Config} */
+
+// Type scale: a 1.25 ratio stepping from 0.9rem. Use fs-* for fixed sizes; fluid
+// roles (hero, display, mail...) are composed from the same steps in index.css.
+const scale = {
+  'fs-0': '0.9rem',
+  'fs-1': '1.12rem',
+  'fs-2': '1.4rem',
+  'fs-3': '1.75rem',
+  'fs-4': '2.19rem',
+  'fs-5': '2.73rem',
+  'fs-6': '3.42rem',
+  'fs-7': '4.27rem',
+}
+
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#6366f1',
-          dark: '#4f46e5',
+        ink: {
+          DEFAULT: '#0A0A0A',
+          800: '#0E0E0E',
+          700: '#131313',
         },
-        secondary: {
-          DEFAULT: '#8b5cf6',
+        line: {
+          DEFAULT: '#1F1F1F',
+          strong: '#2F2F2F',
+        },
+        fg: {
+          DEFAULT: '#F5F5F5',
+          soft: '#C5C5C5',
+          faint: '#8A8A8A',
         },
         accent: {
-          DEFAULT: '#ec4899',
+          DEFAULT: '#FF8A3D',
+          soft: '#FFC49C',
+          deep: '#B8541A',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'serif'],
+        sans: ['Manrope', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+        display: ['Manrope', 'system-ui', 'sans-serif'],
       },
-      boxShadow: {
-        'soft': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-        'md-soft': '0 4px 6px -1px rgb(0 0 0 / 0.1)',
-        'lg-soft': '0 10px 15px -3px rgb(0 0 0 / 0.1)',
-        'xl-soft': '0 20px 25px -5px rgb(0 0 0 / 0.1)',
+      fontSize: {
+        ...scale,
+        'label-lg': ['0.72rem', { letterSpacing: '0.32em' }],
+        'label-sm': ['0.66rem', { letterSpacing: '0.28em' }],
       },
-      animation: {
-        'spin-slow': 'spin 3s linear infinite',
-        'shine': 'shine 3s infinite',
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.22, 1, 0.36, 1)',
+      },
+      maxWidth: {
+        site: '88rem',
       },
       keyframes: {
-        shine: {
-          '0%': { transform: 'translateX(-100%) translateY(-100%) rotate(45deg)' },
-          '100%': { transform: 'translateX(100%) translateY(100%) rotate(45deg)' },
+        pulseSoft: {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.95' },
+        },
+        pulseDot: {
+          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+          '50%': { opacity: '0.45', transform: 'scale(0.8)' },
         },
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      animation: {
+        'pulse-soft': 'pulseSoft 2.2s ease-in-out infinite',
+        'pulse-dot': 'pulseDot 2.4s ease-in-out infinite',
       },
     },
   },
   plugins: [],
 }
-
