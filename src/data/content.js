@@ -195,7 +195,24 @@ export const cloudProjects = [
     learned:
       'Why every account ships with a default VPC, and how spreading subnets across Availability Zones keeps applications running if one zone goes down.',
     tech: ['Amazon VPC', 'Subnets', 'Internet Gateway', 'CIDR', 'Availability Zones'],
-    link: 'https://learn.nextwork.org/projects/aws-networks-vpc',
+    writeup: '/aws-labs/legendary-aws-networks-vpc.pdf',
+  },
+  {
+    slug: 'aws-networks-security',
+    title: 'VPC Traffic Flow and Security',
+    focus: 'AWS networking & security',
+    duration: '2 hours',
+    summary:
+      'Took a subnet from private to public and then locked it down, combining route tables with two independent layers of firewall: a security group at the resource and a network ACL at the subnet boundary.',
+    highlights: [
+      'Route table entry sending 0.0.0.0/0 through the internet gateway, the step that actually makes a subnet public',
+      'Security group allowing inbound HTTP on port 80, with the default allow-all outbound left in place',
+      'Custom network ACL applying broad allow and deny rules across the whole subnet',
+    ],
+    learned:
+      'Security groups are stateful and wrap a resource; network ACLs are stateless and guard the subnet. Attaching an internet gateway is not enough on its own, the route table has to give traffic a path to it.',
+    tech: ['Amazon VPC', 'Route Tables', 'Internet Gateway', 'Security Groups', 'Network ACLs'],
+    writeup: '/aws-labs/legendary-aws-networks-security.pdf',
   },
   {
     slug: 'aws-networks-private',
@@ -208,12 +225,11 @@ export const cloudProjects = [
       'Dedicated route table with a local-only route and no path to an internet gateway',
       'Custom network ACL starting from deny-all, inbound and outbound',
       'Non-overlapping CIDR blocks so public and private subnets route correctly',
-      'Layered security: stateful Security Groups alongside stateless Network ACLs',
     ],
     learned:
       'A default network ACL allows all traffic, while a custom one denies everything. Private subnets need that explicit, deny-first starting point.',
-    tech: ['Amazon VPC', 'Route Tables', 'Network ACLs', 'Security Groups', 'Private Subnets'],
-    link: 'https://learn.nextwork.org/projects/aws-networks-private',
+    tech: ['Amazon VPC', 'Route Tables', 'Network ACLs', 'Private Subnets'],
+    writeup: '/aws-labs/legendary-aws-networks-private-subnets.pdf',
   },
   {
     slug: 'aws-security-iam',
@@ -232,7 +248,7 @@ export const cloudProjects = [
     learned:
       'Least privilege in practice, and that an explicit Deny always overrides an Allow. Testing the policy exposed a gap, which I traced and fixed.',
     tech: ['AWS IAM', 'EC2', 'JSON Policies', 'Policy Simulator', 'Least Privilege'],
-    link: 'https://learn.nextwork.org/projects/aws-security-iam',
+    writeup: '/aws-labs/legendary-aws-security-iam.pdf',
   },
 ]
 

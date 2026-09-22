@@ -219,13 +219,13 @@ function CloudProjects() {
                   <p className="serif-i mt-3 text-fs-2 leading-snug text-fg">{p.learned}</p>
                   <p className="meta mt-6 text-fg-soft">{p.tech.join(' · ')}</p>
                   <a
-                    href={p.link}
+                    href={p.writeup}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="meta group mt-4 inline-flex items-center gap-1.5 py-2 text-fg"
-                    aria-label={`${p.title} project brief on NextWork`}
+                    aria-label={`Read the full write-up for ${p.title} (PDF)`}
                   >
-                    <span className="link-underline">project brief</span>
+                    <span className="link-underline">read the write-up (pdf)</span>
                     <FiArrowUpRight aria-hidden="true" className="text-fg-faint group-hover:text-accent" />
                   </a>
                 </div>
