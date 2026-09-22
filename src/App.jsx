@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Cursor from './components/Cursor'
 import Loader from './components/Loader'
 import { StatusChip } from './components/Chrome'
+import SectionJump from './components/SectionJump'
 import { OverlayProvider } from './components/ResumeModal'
 import Home from './pages/Home'
 import { HOME_PATHS } from './hooks/useGoToSection'
@@ -91,6 +92,7 @@ export default function App() {
 
         {!onHome && <Footer />}
         {onHome && <StatusChip activeSection={activeSection} />}
+        {onHome && <SectionJump />}
         <div className="grain" aria-hidden="true" />
       </OverlayProvider>
     </MotionConfig>
