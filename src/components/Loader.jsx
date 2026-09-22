@@ -20,6 +20,14 @@ export default function Loader({ onDone }) {
   const [visible, setVisible] = useState(() => !hasSeenIntro())
   const [count, setCount] = useState(0)
 
+  // Hold the page still only while the overlay is actually covering it. This is keyed on
+  // `visible` rather than living in the effect below: the Loader itself never unmounts,
+  // so a lock released on unmount would never be released at all.
+  useEffect(() => {
+    if (!visible || reduce) return undefined
+    return lockScroll()
+  }, [visible, reduce])
+
   useEffect(() => {
     if (!visible || reduce) {
       setVisible(false)
@@ -27,7 +35,6 @@ export default function Loader({ onDone }) {
       return
     }
 
-    const unlock = lockScroll()
     const duration = 1500
     let frame
     let timeout
@@ -50,7 +57,6 @@ export default function Loader({ onDone }) {
     return () => {
       cancelAnimationFrame(frame)
       clearTimeout(timeout)
-      unlock()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
