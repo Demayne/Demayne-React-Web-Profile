@@ -50,7 +50,7 @@ export const statement = ['I build software that', 'removes friction.']
 
 export const bio = [
   'I work across the stack with React, Node.js and Python, and I design business processes as carefully as code. On Aurachain I model approval workflows end to end: role-based routing, escalation gateways, validation rules and audit trails that hold up in front of a client.',
-  'That process thinking comes from industry. I automated payroll and RPA infrastructure, cutting processing time by 85% and lifting uptime to 99.7%, and today I map operational workflows into automation requirements. I back it with Azure certification and hands-on AWS networking and IAM work.',
+  'That process thinking comes from industry. I automated payroll and RPA infrastructure, cutting processing time by 85% and lifting uptime to 99.7%, then spent a year mapping logistics and invoicing workflows into automation requirements. I back it with Azure certification and hands-on AWS networking and IAM work.',
 ]
 
 export const stats = [
@@ -257,11 +257,11 @@ export const experience = [
   {
     role: 'Technical Operations Analyst (Logistics & Invoicing)',
     company: 'Barnes Black Logistics',
-    period: 'Oct 2024 – Present',
+    period: 'Oct 2024 – Jan 2026',
     highlights: [
-      'Scope automation opportunities across logistics workflows, turning operational pain points into structured engineering requirements',
-      'Produce business process maps and technical documentation for prospective automation systems',
-      'Run high-volume data workflows for 50+ daily shipments with 99.5% on-time delivery and 100% billing accuracy',
+      'Scoped automation opportunities across logistics workflows, turning operational pain points into structured engineering requirements',
+      'Mapped the shipment lifecycle end to end to pinpoint the bottlenecks holding up dispatch and invoicing, then reworked them into documented, repeatable processes',
+      'Ran high-volume data workflows for 50+ daily shipments with 99.5% on-time delivery and 100% billing accuracy',
     ],
   },
   {
