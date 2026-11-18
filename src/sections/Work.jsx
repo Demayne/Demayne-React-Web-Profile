@@ -122,6 +122,20 @@ function ProjectCard({ project, index }) {
               <span className="meta flex shrink-0 items-center gap-1.5 text-fg transition-colors group-hover:text-accent">
                 view source <FiArrowUpRight aria-hidden="true" className="transition-transform duration-500 ease-out-expo group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
+            ) : project.writeup ? (
+              // No repo, but there is a build write-up. Safe to nest an anchor here:
+              // Wrapper is only an <a> when project.github is set.
+              <a
+                href={project.writeup}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor="Read"
+                className="meta flex shrink-0 items-center gap-1.5 text-fg transition-colors hover:text-accent"
+                aria-label={`Read the build documentation for ${project.title} (PDF)`}
+              >
+                <span className="link-underline">read the build doc (pdf)</span>
+                <FiArrowUpRight aria-hidden="true" className="text-fg-faint" />
+              </a>
             ) : (
               <span className="meta shrink-0">{project.note || 'source private'}</span>
             )}

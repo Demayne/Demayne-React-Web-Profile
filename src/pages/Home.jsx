@@ -11,10 +11,10 @@ import { scrollToSection, sectionForPath } from '../hooks/useGoToSection'
 import { scrollToY } from '../lib/smoothScroll'
 
 const SEO_BY_SECTION = {
-  about: { title: 'About | Demayne Govender, Full-Stack & BPM Engineer' },
-  work: { title: 'Selected Work | Demayne Govender, Full-Stack Engineer' },
-  experience: { title: 'Experience | Demayne Govender, Full-Stack Engineer' },
-  contact: { title: 'Contact | Demayne Govender, Full-Stack Engineer' },
+  about: { title: 'About | Demayne Govender, Automation & BPM Developer' },
+  work: { title: 'Selected Work | Demayne Govender, Software Developer' },
+  experience: { title: 'Experience | Demayne Govender, Software Developer' },
+  contact: { title: 'Contact | Demayne Govender, Software Developer' },
 }
 
 export default function Home({ ready }) {

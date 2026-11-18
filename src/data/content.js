@@ -4,9 +4,9 @@ export const profile = {
   name: 'Demayne Govender',
   firstName: 'Demayne',
   lastName: 'Govender',
-  role: 'Full-Stack Software Engineer',
-  headline: 'Full-Stack Software Engineer · Cloud & Business Process Automation',
-  disciplines: ['Full-stack', 'Cloud', 'Process Automation'],
+  role: 'Software Developer',
+  headline: 'Software Developer · Python, Intelligent Automation & Low-Code BPM',
+  disciplines: ['Intelligent automation', 'Low-code BPM', 'Full-stack'],
   tagline: 'From the schema to the last pixel.',
   location: 'Johannesburg, South Africa',
   timezone: 'Africa/Johannesburg',
@@ -27,7 +27,7 @@ export const sections = [
 ]
 
 export const intro =
-  'Full-stack software engineer delivering production web applications, low-code BPM workflows and business process automation, with Azure-certified, hands-on AWS cloud skills. Top 10 in class with a 99% programme average.'
+  'Software developer focused on business process automation: Python and AI document processing, low-code BPM workflows on Aurachain, and production full-stack web applications. Azure certified, with hands-on AWS networking and IAM work. Top 10 in class with a 99% programme average.'
 
 // Words that drift into the About scroll zone. Positions are % of the stage:
 // d = landscape / desktop, m = portrait / mobile.
@@ -50,6 +50,7 @@ export const statement = ['I build software that', 'removes friction.']
 
 export const bio = [
   'I work across the stack with React, Node.js and Python, and I design business processes as carefully as code. On Aurachain I model approval workflows end to end: role-based routing, escalation gateways, validation rules and audit trails that hold up in front of a client.',
+  'Lately that work has moved upstream into the documents themselves. I build Python harnesses that score Azure AI Document Intelligence output against ground truth and business rules, then route each invoice to automatic acceptance or human review — because high field accuracy alone never proves an invoice is valid.',
   'That process thinking comes from industry. I automated payroll and RPA infrastructure, cutting processing time by 85% and lifting uptime to 99.7%, then spent a year mapping logistics and invoicing workflows into automation requirements. I back it with Azure certification and hands-on AWS networking and IAM work.',
 ]
 
@@ -69,6 +70,12 @@ export const stack = {
     'Requirements Analysis',
   ],
   'Automation & RPA': ['Automation Anywhere (Certified)', 'UiPath', 'Robocorp', 'Python Scripting'],
+  'AI & Document Processing': [
+    'Azure AI Document Intelligence (Prebuilt Invoice Model)',
+    'Field-Level Evaluation Against Ground Truth',
+    'Rule-Based Validation',
+    'Human-in-the-Loop Exception Routing',
+  ],
   'Cloud & Infrastructure': ['Microsoft Azure (AZ-900)', 'AWS (VPC, Subnets, Route Tables, Security Groups, NACLs, IAM)', 'Docker', 'CI/CD', 'Vercel', 'Linux'],
   Languages: ['JavaScript (ES6+)', 'TypeScript', 'Python', 'Java', 'SQL', 'Bash'],
   Frontend: ['React', 'Next.js', 'Redux', 'Tailwind CSS', 'Framer Motion'],
@@ -79,6 +86,27 @@ export const stack = {
 
 // featured: true → full pinned scroll scene. The rest are listed compactly below them.
 export const projects = [
+  {
+    slug: 'invoice-extraction-reliability-harness',
+    featured: true,
+    title: 'Invoice Extraction Reliability Harness',
+    kind: 'AI document processing',
+    status: 'prototype · azure ai',
+    summary:
+      'A Python harness that measures how far you can trust an AI invoice extractor, scoring every field against ground truth written before inference and then routing each invoice to automatic acceptance or human review.',
+    highlights: [
+      'Generates synthetic PDF invoices with ReportLab from labels written before inference, so ground truth is never derived from the model',
+      'Scores every field returned by the Azure prebuilt invoice model against that ground truth',
+      'Deterministic validation: required fields, confidence ≥ 0.80, due date not before invoice date, non-negative amounts, subtotal + VAT = total within 0.01',
+      'Routes to auto-accept or human review with reason codes, emitted as JSON for a downstream Aurachain approval workflow',
+      'Showed field accuracy alone proves nothing: an inconsistent invoice scored 100% on extraction yet was correctly held back for an arithmetic mismatch',
+      'Azure call isolated in one module so unit tests run with no credentials and no network',
+    ],
+    tech: ['Python', 'Azure AI Document Intelligence', 'ReportLab', 'Pytest', 'JSON', 'Rule-based validation'],
+    github: null,
+    note: 'build documentation',
+    writeup: '/project-docs/invoice-extraction-reliability-harness.pdf',
+  },
   {
     slug: 'credential-management-system',
     featured: true,
@@ -102,7 +130,7 @@ export const projects = [
     featured: true,
     title: 'Enterprise Invoice Approval Workflow',
     kind: 'Low-code BPM application',
-    status: 'in progress · aurachain',
+    status: 'built · aurachain',
     summary:
       'An end-to-end supplier invoice registration and approval process on the Aurachain BPM platform, with tiered approvals, escalation for high-value invoices and a tamper-proof audit trail.',
     highlights: [
